@@ -29,7 +29,7 @@ angular.module('GuessApp')
     // Public API here
     return {
       get: function(score) {
-        score = score || 0;
+        score = Math.floor(score || 0);
         score -= score % 5; // round to nearest 5's
         score += ''; // make it a string
         return ratings[score];

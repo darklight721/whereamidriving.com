@@ -1,0 +1,42 @@
+[
+  {
+    "region": "USA",
+    "cities": [
+      { "name": "Berkeley", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Cupertino", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Seattle", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Miami", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Stanford", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] }
+    ]
+  },
+  {
+    "region": "Rest of America",
+    "cities": [
+      { "name": "Montreal", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Vancouver", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Mexico City", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Acapulco", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Rio de Janeiro", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] }
+    ]
+  },
+  {
+    "region": "Europe",
+    "cities": [
+      { "name": "London", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Paris", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Berlin", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Amsterdam", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Rome", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] }
+    ]
+  },
+  {
+    "region": "Rest of the World",
+    "cities": [
+      { "name": "Tokyo", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Sydney", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Cape Town", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Seoul", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
+      { "name": "Auckland", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] }
+    ]
+  }
+]

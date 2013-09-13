@@ -33,11 +33,11 @@ angular.module('GuessApp')
 
         return deferred.promise;
       },
-      generate: function(category) {
+      generate: function(region) {
         var deferred = $q.defer();
 
         $http.get(
-          '/generate' + (category ? '?category=' + category : '')
+          '/generate' + (region ? '?region=' + region : '')
         ).success(function(data) {
           levels = data;
           deferred.resolve();

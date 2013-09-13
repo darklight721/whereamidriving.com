@@ -3,8 +3,8 @@ var mongoose = require('mongoose'),
 
 var CitySchema = new Schema({
   name: String,
-  position: [{ lat: Number, lng: Number, pov: Number }],
-  region: { type: Schema.ObjectId, ref: 'Region' }
+  positions: [{ lat: Number, lng: Number, pov: Number }],
+  region: { type: Schema.ObjectId, ref: 'Region', index: true }
 });
 
 mongoose.model('City', CitySchema);

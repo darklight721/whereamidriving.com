@@ -5,8 +5,8 @@ angular.module('GuessApp')
 
     $scope.regions = Engine.regions();
 
-    $scope.play = function(category) {
-      Engine.generate(category).then(function(){
+    $scope.play = function(region) {
+      Engine.generate(region).then(function(){
         Record.new(Engine.levels());
         $location.path('/play/1');
       });

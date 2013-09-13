@@ -7,7 +7,10 @@ exports.all = function(req, res) {
       res.json(500, { error: 'Server error.' });
     }
     else {
-      res.json(regions);
+      regions = regions || [];
+      res.json(regions.map(function(region) {
+        return { id: region._id, name: region.name };
+      }));
     }
   });
 };

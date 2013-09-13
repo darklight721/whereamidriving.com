@@ -6,9 +6,13 @@ function random(n) {
   return Math.floor(Math.random() * n);
 }
 
-function uniqueSet(options) {
-  var list = options.list, listLength = list.length,
-      set = {}, setLength = Math.min(options.length, listLength), setCounter = 0,
+function uniqueSet(length, list, options) {
+  if (!length || !list) return [];
+  options = options || {};
+
+  var listLength = list.length,
+      setLength = Math.min(length, listLength),
+      set = {}, setCounter = 0,
       initial = options.initial, transform = options.transform;
 
   if (initial) {
@@ -39,21 +43,17 @@ exports.generate = function(req, res) {
       res.json(500, { error: 'Server error.' });
     }
     else {
-      res.json(uniqueSet({
-        length: 12,
-        list: cities,
+      res.json(uniqueSet(12, cities, {
         transform: function(city, index) {
           return {
             id: city._id,
             position: city.positions[random(city.positions.length)],
-            choices: uniqueSet({
-              length: index < 4 ? 2 : index < 8 ? 3 : 4,
-              list: cities,
+            choices: uniqueSet(index < 4 ? 2 : index < 8 ? 3 : 4, cities, {
               initial: city,
+              shuffle: true,
               transform: function(city) {
                 return city.name;
-              },
-              shuffle: true
+              }
             })
           };
         }

@@ -1,0 +1,19 @@
+<div class="row play" ng-init="play()">
+  <div class="span12">
+    <div class="row scores">
+      <div class="span2">
+        <span class="muted uppercase">Points</span><br/>
+        {{score}}
+      </div>
+      <levels active="{{level}}" class="span8"></levels>
+      <div class="span2"><a ng-show="answer" ng-href="#{{next()}}" class="bt bt-border btn-block">Next</a></div>
+    </div>
+    <div class="row">
+      <map onposchanged="updateScore()" position="{{city.position}}" class="span12"></map>
+    </div>
+    <div class="row choices">
+      <div ng-repeat="choice in city.choices" class="span{{ 12 / city.choices.length }}">
+        <button ng-click="choose(choice)" ng-disabled="answer" ng-class="state(choice)" class="bt bt-large bt-border btn-block">{{choice}}</button>
+    </div>
+  </div>
+</div>

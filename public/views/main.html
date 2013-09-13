@@ -1,0 +1,11 @@
+<div class="hero-unit text-center">
+  <div class="btn-group">
+    <button class="bt bt-large" ng-click="play()">Play</button>
+    <button class="bt bt-large dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li class="disabled"><a href="">Regions</a></li>
+      <li ng-repeat="region in regions"><a href="" ng-click="play(region.id)">{{ region.name }}</a></li>
+    </ul>
+  </div>
+  <p>Google's Street View Car has traveled across the 7 continents to capture stunning panoramic views of the different cities of the world. Now, can you identify some of the cities this car has driven on?</p>
+</div>

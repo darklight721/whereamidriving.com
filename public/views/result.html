@@ -1,0 +1,9 @@
+<div class="row result" ng-init="init()">
+  <div class="span12 text-center">
+    <p class="line">Your total score is: <strong>{{sum}}</strong></p>
+    <div class="rating" ng-class="{pass:rating.pass}">{{rating.rate}}</div>
+    <p class="line">{{rating.message}}</p>
+    <a class="bt bt-large" target="_blank" ng-href="https://twitter.com/share?{{buildTwitterParams()}}">Tweet Score</a>
+    <a class="bt bt-large" href="#/">Back to Main</a>
+  </div>
+</div>

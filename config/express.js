@@ -13,7 +13,7 @@ module.exports = function(app, config) {
     app.use(express.methodOverride());
     app.use(app.router);
     app.use(function(req, res) {
-      res.status(404).render('404', { title: '404' });
+      res.status(404).redirect(404, '404.html');
     });
   });
 };

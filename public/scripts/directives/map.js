@@ -19,12 +19,18 @@ angular.module('GuessApp')
         scope.$watch('position', function(position) {
           if (!position) return;
 
-          var position = JSON.parse(position),
-              latlng = new google.maps.LatLng(position.lat, position.lng);
+          position = JSON.parse(position);
+          var originalPos = new google.maps.LatLng(position.lat, position.lng);
+          streetView.setPosition(originalPos);
 
-          streetView.setPosition(latlng);
+          if (position.pov) {
+            var pov = streetView.getPov();
+            pov.heading = position.pov;
+            streetView.setPov(pov);
+          }
+
           google.maps.event.addListener(streetView, 'position_changed', function() {
-            if (latlng.equals(streetView.getPosition())) return;
+            if (originalPos.equals(streetView.getPosition())) return;
             scope.$apply(function(){ scope.onposchanged() });
           });
         });

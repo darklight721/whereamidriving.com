@@ -20,14 +20,16 @@ data.forEach(function(data) {
       console.log('Error populating regions!');
       return;
     }
+    console.log('Region: ' + region.name + ' created.');
 
     data.cities.forEach(function(city) {
       var _city = new City(city);
       _city.region = region;
-      _city.save(function(err) {
+      _city.save(function(err, city) {
         if (err) {
           console.log('Error populating cities!');
         }
+        console.log('City: ' + city.name + ' created.');
       });
     });
   });

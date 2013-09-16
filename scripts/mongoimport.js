@@ -26,10 +26,8 @@ data.forEach(function(data) {
       var _city = new City(city);
       _city.region = region;
       _city.save(function(err, city) {
-        if (err) {
-          console.log('Error populating cities!');
-        }
-        console.log('City: ' + city.name + ' created.');
+        if (err) console.log('Error populating cities!');
+        else console.log('City: ' + city.name + ' created.');
       });
     });
   });

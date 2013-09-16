@@ -9,16 +9,16 @@ angular.module('GuessApp')
       var city = Engine.play($scope.level);
       if (city) {
         $scope.city = city;
-        loadAnswer();
+        loadAnswerPoints();
       }
       else {
         $location.path('/');
       }
     };
 
-    $scope.updateScore = function() {
-      if (!$scope.answer && $scope.score) {
-        $scope.score -= 10;
+    $scope.updatePoints = function() {
+      if (!$scope.answer && $scope.points) {
+        $scope.points -= 10;
       }
     };
 
@@ -29,9 +29,9 @@ angular.module('GuessApp')
         function(isCorrect) {
           Record.set($scope.level, {
             answer: answer,
-            score: isCorrect ? $scope.score : 0
+            score: isCorrect ? $scope.points : 0
           });
-          loadAnswer();
+          loadAnswerPoints();
         },
         function() {
           $scope.answer = false;
@@ -50,9 +50,9 @@ angular.module('GuessApp')
              'wrong';
     }
 
-    function loadAnswer() {
+    function loadAnswerPoints() {
       $scope.answer = Record.get($scope.level);
-      $scope.score = $scope.answer ? $scope.answer.score : 100;
+      $scope.points = $scope.answer ? $scope.answer.score : 100;
     }
 
   });

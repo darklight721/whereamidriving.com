@@ -6,7 +6,7 @@ function random(n) {
   return Math.floor(Math.random() * n);
 }
 
-function uniqueSet(length, list, options) {
+function randomUniqueSet(length, list, options) {
   if (!length || !list) return [];
   options = options || {};
 
@@ -43,12 +43,12 @@ exports.generate = function(req, res) {
       res.json(500, { error: 'Server error.' });
     }
     else {
-      res.json(uniqueSet(12, cities, {
+      res.json(randomUniqueSet(12, cities, {
         transform: function(city, index) {
           return {
             id: city._id,
             position: city.positions[random(city.positions.length)],
-            choices: uniqueSet(index < 4 ? 2 : index < 8 ? 3 : 4, cities, {
+            choices: randomUniqueSet(index < 4 ? 2 : index < 8 ? 3 : 4, cities, {
               initial: city,
               shuffle: true,
               transform: function(city) {

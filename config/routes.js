@@ -7,4 +7,8 @@ module.exports = function(app){
   app.get('/generate', engine.generate);
   app.post('/check', engine.check);
 
+  var stats = require('../app/controllers/stats');
+  app.post('/submit_score', stats.submitScore);
+  app.get('/stats', stats.get);
+
 };

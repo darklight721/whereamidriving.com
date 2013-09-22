@@ -67,12 +67,14 @@ exports.check = function(req, res) {
       answer = req.body.answer;
 
   if (id && answer) {
-    City.findById(id, 'name', function(err, city) {
+    City.findById(id, 'name stats', function(err, city) {
       if (err) {
         res.json(500, { error: 'Server error.' });
       }
       else if (city) {
-        res.json({ correct: city.name == answer });
+        var isCorrect = city.name == answer;
+        city.update({ $inc: isCorrect ? { 'stats.correct': 1 } : { 'stats.wrong': 1 } }).exec();
+        res.json({ correct: isCorrect });
       }
       else {
         res.json(500, { error: 'Not found.' });

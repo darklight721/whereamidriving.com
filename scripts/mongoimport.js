@@ -44,3 +44,18 @@ City.remove({}, function(err) {
     });
   });
 })
+
+require('../app/models/stats');
+var Stats = mongoose.model('Stats');
+
+Stats.remove({}, function(err) {
+  if (err) {
+    console.log('Error removing stats table!');
+    return;
+  }
+
+  Stats.create({}, function(err) {
+    if (err) console.log('Error creating stats!');
+    else console.log('Stats: created.');
+  });
+})

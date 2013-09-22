@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('GuessApp')
-  .controller('ResultCtrl', function ($scope, $location, Record, Rating) {
+  .controller('ResultCtrl', function ($scope, $location, Record, Rating, Engine) {
 
     $scope.init = function() {
       if (Record.count() === 0) {
@@ -11,10 +11,12 @@ angular.module('GuessApp')
         var missing = Record.findNextMissing();
         if (missing >= 0) {
           $location.path('/play/' + (missing + 1));
+          return;
         }
 
         $scope.sum = Record.sum();
         $scope.rating = Rating.get($scope.sum / Record.count());
+        Engine.submitScore($scope.sum);
       }
     };
 

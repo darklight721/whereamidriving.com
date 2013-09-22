@@ -90,6 +90,14 @@ angular.module('GuessApp')
       },
       levels: function() {
         return levels.length;
+      },
+      submitScore: function(score) {
+        return $http.post('/submit_score', {
+          score: score
+        });
+      },
+      stats: function() {
+        return $http.get('/stats');
       }
     };
   });

@@ -73,7 +73,7 @@ exports.check = function(req, res) {
       }
       else if (city) {
         var isCorrect = city.name == answer;
-        city.update({ $inc: isCorrect ? { 'stats.correct': 1 } : { 'stats.wrong': 1 } }).exec();
+        city.update({ $inc: { 'stats': isCorrect ? 1 : -1 } }).exec();
         res.json({ correct: isCorrect });
       }
       else {

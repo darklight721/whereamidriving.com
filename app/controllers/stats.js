@@ -39,6 +39,32 @@ exports.get = function(req, res) {
       average: stats.average()
     };
 
-    res.json(data);
+    City.aggregate(
+      { $sort: { stats: 1 } },
+      { $group: {
+          _id: '$region',
+          easiestCity: { $last: '$name' },
+          easiestStats: { $last: '$stats' },
+          hardestCity: { $first: '$name' },
+          hardestStats: { $first: '$stats' }
+        }
+      },
+      { $project: {
+          _id: 0,
+          region: '$_id',
+          easiestCity: { name: '$easiestCity', stats: '$easiestStats' },
+          hardestCity: { name: '$hardestCity', stats: '$hardestStats' }
+        }
+      },
+      function(err, result) {
+        if (err) {
+          res.json(500, { error: 'Error' });
+          return;
+        }
+
+        data.cities = result;
+        res.json(data);
+      }
+    );
   });
 };

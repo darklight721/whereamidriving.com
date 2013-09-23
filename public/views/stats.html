@@ -1,1 +1,20 @@
-<p>This is the stats view.</p>
+<table class="table">
+  <tr>
+    <th>Number of games played</th>
+    <td colspan="2">{{stats.count}}</td>
+  </tr>
+  <tr>
+    <th>Average score</th>
+    <td colspan="2">{{stats.average}}</td>
+  </tr>
+  <tr>
+    <th>Regions</th>
+    <th>Easiest Cities</th>
+    <th>Hardest Cities</th>
+  </tr>
+  <tr ng-repeat="region in regions">
+    <th>{{region.name}}</th>
+    <td>{{statsForRegion(region.id).easiestCity.name}}</td>
+    <td>{{statsForRegion(region.id).hardestCity.name}}</td>
+  </tr>
+</table>

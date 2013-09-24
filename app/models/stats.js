@@ -7,7 +7,7 @@ var StatsSchema = new Schema({
 });
 
 StatsSchema.method('average', function() {
-  return this.count ? this.total / this.count : 0;
+  return this.count ? Math.floor(this.total / this.count) : 0;
 });
 
 StatsSchema.static('get', function(callback) {

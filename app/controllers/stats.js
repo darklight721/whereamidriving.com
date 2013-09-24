@@ -49,20 +49,20 @@ exports.get = function(req, res) {
           hardestStats: { $first: '$stats' }
         }
       },
-      { $project: {
-          _id: 0,
-          region: '$_id',
-          easiestCity: { name: '$easiestCity', stats: '$easiestStats' },
-          hardestCity: { name: '$hardestCity', stats: '$hardestStats' }
-        }
-      },
       function(err, result) {
         if (err) {
           res.json(500, { error: 'Error' });
           return;
         }
 
-        data.cities = result;
+        data.cities = result.reduce(function(memo, result) {
+          memo[result._id] = {
+            easiestCity: { name: result.easiestCity, stats: result.easiestStats },
+            hardestCity: { name: result.hardestCity, stats: result.hardestStats }
+          }
+          return memo;
+        }, {});
+
         res.json(data);
       }
     );

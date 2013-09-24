@@ -97,7 +97,15 @@ angular.module('GuessApp')
         });
       },
       stats: function() {
-        return $http.get('/stats');
+        var deferred = $q.defer();
+
+        $http.get('/stats').success(function(data) {
+          deferred.resolve(data);
+        }).error(function() {
+          deferred.reject();
+        });
+
+        return deferred.promise;
       }
     };
   });

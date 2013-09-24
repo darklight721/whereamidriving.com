@@ -14,7 +14,7 @@
   </tr>
   <tr ng-repeat="region in regions">
     <th>{{region.name}}</th>
-    <td>{{statsForRegion(region.id).easiestCity.name}}</td>
-    <td>{{statsForRegion(region.id).hardestCity.name}}</td>
+    <td>{{stats.cities[region.id].easiestCity.name}}</td>
+    <td>{{stats.cities[region.id].hardestCity.name}}</td>
   </tr>
 </table>

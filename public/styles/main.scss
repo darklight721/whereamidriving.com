@@ -116,7 +116,7 @@ a {
     padding: 60px;
 
     .btn-group {
-        margin: 60px auto;
+        margin: 50px auto;
     }
 
     p {
@@ -273,5 +273,15 @@ ul.levels {
         &.pass {
             background-color: $color-green;
         }
+    }
+}
+
+.table {
+    th, td {
+        border-top: none;
+    }
+    th {
+        @extend .uppercase, .muted;
+        font-weight: normal;
     }
 }

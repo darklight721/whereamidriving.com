@@ -102,7 +102,30 @@ angular.module('GuessApp')
         $http.get('/stats').success(function(data) {
           deferred.resolve(data);
         }).error(function() {
-          deferred.reject();
+          // sample
+          deferred.resolve({
+            count: 5,
+            average: 1200,
+            cities: {
+              '1': {
+                easiestCity: { name: 'New York City', stats: 100 },
+                hardestCity: { name: 'Columbus', stats: -3 }
+              },
+              '2': {
+                easiestCity: { name: 'Rio de Janeiro', stats: 100 },
+                hardestCity: { name: 'Arequipa', stats: -3 }
+              },
+              '3': {
+                easiestCity: { name: 'London', stats: 100 },
+                hardestCity: { name: 'Nice', stats: -3 }
+              },
+              '4': {
+                easiestCity: { name: 'Tokyo', stats: 100 },
+                hardestCity: { name: 'Bangkok', stats: -3 }
+              }
+            }
+          });
+          //deferred.reject();
         });
 
         return deferred.promise;

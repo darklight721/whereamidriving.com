@@ -1873,7 +1873,8 @@ cite {
 }
 
 .muted,
-header nav ul li a {
+header nav ul li a,
+.table th {
   color: #999999;
 }
 
@@ -15503,7 +15504,8 @@ a.badge:focus {
 header h1,
 header nav ul li a,
 footer,
-.dropdown-menu li.disabled a {
+.dropdown-menu li.disabled a,
+.table th {
   text-transform: uppercase;
 }
 
@@ -15724,7 +15726,7 @@ a:hover {
 }
 
 .hero-unit .btn-group {
-  margin: 60px auto;
+  margin: 50px auto;
 }
 
 @media -sass-debug-info {
@@ -16241,4 +16243,12 @@ ul.levels li a.score-0:hover {
 
 .result .rating.pass {
   background-color: #27ae60;
+}
+
+.table th, .table td {
+  border-top: none;
+}
+
+.table th {
+  font-weight: normal;
 }

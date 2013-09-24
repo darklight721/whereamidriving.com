@@ -15520,7 +15520,8 @@ footer,
 }
 
 .muted,
-header nav ul li a {
+header nav ul li a,
+.table th {
   color: rgba(44, 62, 80, 0.6);
 }
 
@@ -16245,8 +16246,29 @@ ul.levels li a.score-0:hover {
   background-color: #27ae60;
 }
 
-.table th, .table td {
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/Roy\/Projects\/gtc\/app\/styles\/main\.scss;
+  }
+
+  line {
+    font-family: \00003280;
+  }
+}
+
+.table th,
+.table td {
   border-top: none;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/Roy\/Projects\/gtc\/app\/styles\/main\.scss;
+  }
+
+  line {
+    font-family: \00003283;
+  }
 }
 
 .table th {

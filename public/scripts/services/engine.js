@@ -3,33 +3,25 @@
 angular.module('GuessApp')
   .factory('Engine', function ($http, $q) {
     // Service logic
-    var levels = [],
-        regions = null;
+    var levels = [];
 
     // Public API here
     return {
       regions: function() {
         var deferred = $q.defer();
 
-        if (regions) {
-          deferred.resolve(regions);
-        }
-        else {
-          $http.get('/regions').success(function(data) {
-            regions = data;
-            deferred.resolve(regions);
-          }).error(function(data, status) {
-            // sample
-            regions = [
-              { id: 1, name: 'USA' },
-              { id: 2, name: 'Rest of America' },
-              { id: 3, name: 'Europe' },
-              { id: 4, name: 'Rest of the World' }
-            ];
-            deferred.resolve(regions);
-            // deferred.reject();
-          });
-        }
+        $http.get('/regions', { cache: true }).success(function(data) {
+          deferred.resolve(data);
+        }).error(function(data, status) {
+          // sample
+          deferred.resolve([
+            { id: 1, name: 'USA' },
+            { id: 2, name: 'Rest of America' },
+            { id: 3, name: 'Europe' },
+            { id: 4, name: 'Rest of the World' }
+          ]);
+          // deferred.reject();
+        });
 
         return deferred.promise;
       },
@@ -99,7 +91,7 @@ angular.module('GuessApp')
       stats: function() {
         var deferred = $q.defer();
 
-        $http.get('/stats').success(function(data) {
+        $http.get('/stats', { cache: true }).success(function(data) {
           deferred.resolve(data);
         }).error(function() {
           // sample

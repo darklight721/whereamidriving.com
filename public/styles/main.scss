@@ -38,6 +38,13 @@ $fontsize-large: 16px;
     }
 }
 
+@mixin circle($diameter) {
+    padding: 0;
+    width: $diameter;
+    height: $diameter;
+    border-radius: $diameter / 2;
+}
+
 .uppercase {
     text-transform: uppercase;
 }
@@ -210,6 +217,16 @@ a {
     }
 }
 
+.table {
+    th, td {
+        border-top: none;
+    }
+    th {
+        @extend .uppercase, .muted;
+        font-weight: normal;
+    }
+}
+
 #map-canvas {
     height: 400px;
     margin-top: 10px;
@@ -226,13 +243,10 @@ ul.levels {
 
             display: block;
             margin: 0 3px;
-            padding: 0;
-            width: $diameter;
-            height: $diameter;
-            border-radius: $diameter / 2;
             background-color: transparent;
             overflow: hidden;
 
+            @include circle(40px);
             @include score($color-green);
             @include transition(all 0.2s);
 
@@ -258,17 +272,15 @@ ul.levels {
         $diameter: 40px;
 
         display: inline-block;
-        padding: 0;
         margin: 0;
         margin-bottom: 10px;
-        width: $diameter;
-        height: $diameter;
         line-height: $diameter;
-        border-radius: $diameter / 2;
         background-color: $color-red;
         color: $color-white;
         font-size: $fontsize-large;
         text-align: center;
+
+        @include circle($diameter);
 
         &.pass {
             background-color: $color-green;
@@ -276,12 +288,8 @@ ul.levels {
     }
 }
 
-.table {
-    th, td {
-        border-top: none;
-    }
-    th {
-        @extend .uppercase, .muted;
-        font-weight: normal;
-    }
+.about p {
+    font-size: $fontsize-large;
+    line-height: $fontsize-large * 2;
+    text-align: justify;
 }

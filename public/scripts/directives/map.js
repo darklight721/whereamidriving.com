@@ -20,8 +20,7 @@ angular.module('GuessApp')
           if (!position) return;
 
           position = JSON.parse(position);
-          var originalPos = new google.maps.LatLng(position.lat, position.lng);
-          streetView.setPosition(originalPos);
+          streetView.setPosition(new google.maps.LatLng(position.lat, position.lng));
 
           if (position.pov) {
             var pov = streetView.getPov();
@@ -29,9 +28,15 @@ angular.module('GuessApp')
             streetView.setPov(pov);
           }
 
+          var originalPos = null;
           google.maps.event.addListener(streetView, 'position_changed', function() {
-            if (originalPos.equals(streetView.getPosition())) return;
-            scope.$apply(function(){ scope.onposchanged() });
+            var position = streetView.getPosition();
+            if (!originalPos) {
+              originalPos = position;
+            }
+            else if (!originalPos.equals(position)) {
+              scope.$apply(function(){ scope.onposchanged() });
+            }
           });
         });
 

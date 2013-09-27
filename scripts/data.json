@@ -72,11 +72,9 @@
   {
     "region": "Rest of the World",
     "cities": [
-      { "name": "Tokyo", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
-      { "name": "Sydney", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
-      { "name": "Cape Town", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
-      { "name": "Seoul", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] },
-      { "name": "Auckland", "positions": [{ "lat": 37.869566, "lng": -122.252523 }] }
+      { "name": "Tokyo", "positions": [{ "lat": 35.688744, "lng": 139.699445, "pov": 243 }, { "lat": 35.692588, "lng": 139.694176, "pov": 114 }, { "lat": 35.682827, "lng": 139.760316, "pov": 108.5 }] },
+      { "name": "Osaka", "positions": [{ "lat": 34.693606, "lng": 135.504698, "pov": 166 }, { "lat": 34.670106, "lng": 135.500338, "pov": 182 }, { "lat": 34.668783, "lng": 135.501887, "pov": 95.5 }] },
+      { "name": "Yokohama", "positions": [{ "lat": 35.44569, "lng": 139.650755, "pov": 275 }, { "lat": 35.467783, "lng": 139.622246, "pov": 283 }, { "lat": 35.457447, "lng": 139.625931, "pov": 132.5 }] }
     ]
   }
 ]

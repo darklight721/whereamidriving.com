@@ -1,20 +1,26 @@
-<table class="table">
-  <tr>
-    <th class="span4">Number of games played</th>
-    <td colspan="2">{{stats.count}}</td>
-  </tr>
-  <tr>
-    <th>Average score</th>
-    <td colspan="2">{{stats.average}}</td>
-  </tr>
-  <tr>
-    <th>Regions</th>
-    <th>Easiest Cities</th>
-    <th>Hardest Cities</th>
-  </tr>
-  <tr ng-repeat="region in regions">
-    <th>{{region.name}}</th>
-    <td>{{stats.cities[region.id].easiestCity.name}}</td>
-    <td>{{stats.cities[region.id].hardestCity.name}}</td>
-  </tr>
-</table>
+<div class="pure-u-1 max-height">
+  <div class="flex-center">
+    <div class="stats">
+      <table class="">
+        <tr>
+          <th class="span4">Number of games played</th>
+          <td colspan="2">{{stats.count}}</td>
+        </tr>
+        <tr>
+          <th>Average score</th>
+          <td colspan="2">{{stats.average}}</td>
+        </tr>
+        <tr>
+          <th>Regions</th>
+          <th>Easiest Cities</th>
+          <th>Hardest Cities</th>
+        </tr>
+        <tr ng-repeat="region in regions">
+          <th>{{region.name}}</th>
+          <td>{{stats.cities[region.id].easiestCity.name}}</td>
+          <td>{{stats.cities[region.id].hardestCity.name}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

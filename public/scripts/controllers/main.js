@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('GuessApp')
-  .controller('MainCtrl', function ($scope, $location, Engine, Record) {
+  .controller('MainCtrl', function ($scope, $location, Server, Session) {
 
-    $scope.regions = Engine.regions();
+    $scope.regions = Server.regions();
 
     $scope.play = function(region) {
-      Engine.generate(region).then(function(){
-        Record.new(Engine.levels());
-        $location.path('/play/1');
+      Server.cities(region).then(function(cities) {
+        Session.new(cities);
+        $location.path('/play');
       });
     };
 

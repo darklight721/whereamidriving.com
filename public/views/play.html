@@ -1,19 +1,29 @@
-<div class="row play" ng-init="play()">
-  <div class="span12">
-    <div class="row scores">
-      <div class="span2">
-        <span class="muted uppercase">Points</span><br/>
-        {{points}}
+<div class="pure-u-1 max-height" ng-init="play()">
+  <map onposchanged="updateLife()" position="{{city.position}}" class="max-height"></map>
+  <div class="play fixed-bottom">
+    <div class="pure-g-r">
+      <div class="pure-u-1">
+        <life count="{{life()}}"></life>
       </div>
-      <levels active="{{level}}" class="span8"></levels>
-      <div class="span2"><a ng-show="answer" ng-href="#{{next()}}" class="bt bt-border btn-block">Next</a></div>
-    </div>
-    <div class="row">
-      <map onposchanged="updatePoints()" position="{{city.position}}" class="span12"></map>
-    </div>
-    <div class="row choices">
-      <div ng-repeat="choice in city.choices" class="span{{ 12 / city.choices.length }}">
-        <button ng-click="choose(choice)" ng-disabled="answer" ng-class="state(choice)" class="bt bt-large bt-border btn-block">{{choice}}</button>
+      <div class="pure-u-1-5">
+        <div class="padded">
+          <div class="info"><i class="icon-heart-fill" title="Life"></i> {{life()}} / <i class="icon-star" title="Score"></i> {{score()}}</div>
+        </div>
+      </div>
+      <div class="pure-u-3-5">
+        <div class="pure-g-r">
+          <div ng-repeat="choice in city.choices" class="pure-u-1-{{ city.choices.length }}">
+            <div class="padded">
+              <button ng-click="choose(choice)" ng-disabled="answer" ng-class="state(choice)" class="pure-button max-width">{{choice}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pure-u-1-5">
+        <div class="padded">
+          <button class="pure-button max-width" ng-show="answer" ng-click="next()">Next <i class="icon-arrow-right"></i></button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

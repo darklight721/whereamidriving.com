@@ -7,7 +7,7 @@ angular.module('GuessApp', [])
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/play/:level', {
+      .when('/play', {
         templateUrl: 'views/play.html',
         controller: 'PlayCtrl'
       })

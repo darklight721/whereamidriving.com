@@ -1,13 +1,14 @@
-$iconSpritePath: "../images/glyphicons-halflings.png";
-$iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
-$bgImagePath: "../images/bg.jpg";
+// *** imports ***
 
-@import "bootstrap-sass/lib/bootstrap";
 @import "icomoon.css";
 
+// *** variables ***
+
+$bgImagePath: "../images/bg.jpg";
 $color-white: #f6f6f6;
-$color-blue: #2c3e50;
+$color-blue: #5487bb;
 $color-green: #27ae60;
+$color-yellow: #ceb484;
 $color-red: #c0392b;
 $alpha-light: 0.3;
 $alpha-medium: 0.6;
@@ -16,6 +17,9 @@ $radius: 4px;
 $fontsize-small: 12px;
 $fontsize-medium: 14px;
 $fontsize-large: 16px;
+$color-shadow: rgba(#000, 0.1);
+
+// *** mixins ***
 
 @mixin transition($props) {
     -webkit-transition: $props;
@@ -45,122 +49,194 @@ $fontsize-large: 16px;
     border-radius: $diameter / 2;
 }
 
-.uppercase {
-    text-transform: uppercase;
+// *** utility classes ***
+
+.text-center { text-align: center; }
+
+.uppercase { text-transform: uppercase; }
+
+.muted { color: rgba($color-blue, $alpha-medium); }
+
+.fixed-top { position: fixed; top: 0; z-index: 99; }
+
+.fixed-bottom { position: fixed; bottom: 0; z-index: 99; }
+
+.pull-right { float: right; }
+
+.pull-left { float: left; }
+
+.max-height { height: 100%; }
+
+.max-width { width: 100%; }
+
+.padded { padding: 5px; }
+
+.clearfix {
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
 }
 
-.muted {
-    color: rgba($color-blue, $alpha-medium);
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: top;
+    border-top: 4px solid #000000;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    content: "";
 }
+
+// *** element styles ***
 
 html, body {
-  margin: 20px;
+    height: 100%;
 }
 
 body {
-    background: $color-white;
-    color: $color-blue;
-    font-family: 'Raleway', sans-serif;
+    background-image: url($bgImagePath);
+    background-repeat: no-repeat;
+    background-position: center;
+    color: $color-white;
 }
 
 header {
-    h1 {
-        font-size: $fontsize-medium;
-        font-weight: normal;
-        letter-spacing: 2px;
-        @extend .uppercase;
-    }
-    nav ul li {
-        margin-left: 10px;
-        a {
-            font-size: $fontsize-medium;
-            line-height: 40px;
-            @extend .muted;
-            @extend .uppercase;
-            @include transition(all 0.2s);
-
-            &.active, &:hover {
-                color: $color-blue;
-                text-decoration: none;
-            }
-        }
-    }
+    width: 100%;
 }
 
-.main {
-    margin-top: 30px;
-}
-
-footer {
-    margin-top: 40px;
-    padding-top: 10px;
-    border-top: 1px solid rgba($color-blue, $alpha-light);
-    font-size: $fontsize-small;
-    @extend .uppercase;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 button {
     font-family: inherit;
 }
 
-a {
-    color: inherit;
-    &:hover {
-        text-decoration: none;
-    }
+th {
+    text-align: left;
 }
 
-.hero-unit {
-    margin: 0;
-    height: 268px;
-    font-size: $fontsize-large;
-    line-height: 30px;
-    background-image: url($bgImagePath);
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: $radius;
-    padding: 60px;
+// *** pure custom styles ***
 
-    .btn-group {
-        margin: 50px auto;
-    }
-
-    p {
-        color: rgba($color-white, $alpha-dark);
-    }
+body,
+.pure-g [class *= "pure-u"],
+.pure-g-r [class *= "pure-u"] {
+    font-family: 'Raleway', sans-serif;
 }
 
-.bt {
-    display: inline-block;
-    padding: 10px 20px;
-    outline: none;
-    border: none;
-    border-radius: $radius;
-    background-color: rgba($color-blue, $alpha-medium);
-    color: $color-white;
-    text-align: center;
-    text-decoration: none;
-    @include transition(all 0.2s);
+.pure-menu.pure-menu-open {
+    background-color: rgba($color-blue, $alpha-dark);
 
-    &.bt-border {
-        border: 1px solid rgba($color-blue, $alpha-dark);
+    a {
+        @extend .uppercase;
+        color: $color-white;
+        font-size: 90%;
+    }
+
+    li a:hover {
         background-color: transparent;
-        color: $color-blue;
     }
 
-    &.bt-large {
-        padding: 20px 30px;
-        font-size: $fontsize-large;
-        letter-spacing: 3px;
+    .pure-menu-selected {
+        border-top: 2px solid $color-white;
+    }
+}
 
-        &.dropdown-toggle {
-            padding: 20px;
+.pure-menu.pure-menu-horizontal  ul {
+    height: auto;
+
+    li { overflow: hidden; }
+}
+
+.pure-button {
+    color: $color-white;
+    background-color: transparent;
+    border: 2px solid $color-white;
+
+    &:disabled {
+        border: 2px solid transparent;
+    }
+}
+
+// *** other styles ***
+
+.swap {
+    i {
+        @include transition(all 0.4s);
+    }
+
+    &:after {
+        position: absolute;
+        left: 0;
+        top: -100%;
+        width: 100%;
+        padding: 5px 0;
+        text-align: center;
+        opacity: 0;
+        content: attr(title);
+        @include transition(all 0.4s);
+    }
+
+    &:hover {
+        i {
+            color: transparent;
+        }
+
+        &:after {
+            top: 0;
+            opacity: 1;
         }
     }
+}
 
-    &.dropdown-toggle {
-        background-color: rgba($color-blue, $alpha-medium - 0.1);
+.twitter-share-button {
+    padding: 6px 20px;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.main, .about, .result, .stats {
+    background-color: rgba($color-blue, $alpha-light);
+    border-radius: 2px;
+    padding: 10px;
+
+    p {
+        text-align: justify;
+        max-width: 600px;
+        padding: 10px;
+        margin: 0;
+        text-indent: 50px;
+        line-height: 1.75;
+    }
+}
+
+.play-button {
+    margin: 25px 0;
+    font-size: 400%;
+    vertical-align: middle;
+    @include circle(100px);
+
+    &:before {
+        margin-left: 10px;
+    }
+}
+
+.dropdown {
+    display: inline-block;
+
+    .dropdown-toggle {
+        @include circle(25px);
 
         .caret {
             border-top: 4px solid $color-white;
@@ -168,53 +244,91 @@ a {
         }
     }
 
-    &:hover:not(:disabled) {
-        color: $color-white;
-        text-decoration: none;
-        background-color: rgba($color-blue, $alpha-dark);
-    }
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        margin: 3px 0 0 0;
+        padding: 5px 0;
+        border-radius: 4px;
+        box-shadow: 0 5px 10px $color-shadow;
+        background-color: rgba($color-white, $alpha-dark);
+        color: $color-blue;
+        z-index: 99;
+        list-style: none;
 
-    &:disabled {
-        cursor: default;
-    }
+        & > li {
+            & > a {
+                display: block;
+                padding: 3px 20px;
+                clear: both;
+                white-space: nowrap;
+                text-align: left;
+            }
 
-    &.correct {
-        background-color: rgba($color-green, $alpha-dark);
-    }
+            &.disabled > a {
+                @extend .uppercase, .muted;
+                font-size: 80%;
+            }
 
-    &.wrong {
-        background-color: rgba($color-red, $alpha-dark);
-    }
-}
-
-.dropdown-menu {
-    background-color: rgba($color-white, $alpha-dark);
-    text-align: left;
-    li a:hover {
-        background-color: rgba($color-blue, $alpha-dark);
-        background-image: none;
-    }
-    li.disabled a {
-        @extend .uppercase;
-    }
-}
-
-.btn-group {
-    .bt {
-        border-radius: 0;
-
-        &:first-of-type {
-            border-radius: $radius 0 0 $radius;
-        }
-
-        &:last-of-type {
-            border-radius: 0 $radius $radius 0;
+            &:not(.disabled) > a:hover {
+                color: $color-white;
+                background-color: rgba($color-blue, $alpha-dark);
+                background-image: none;
+            }
         }
     }
 
-    &.open .dropdown-toggle {
-        background-color: rgba($color-blue, $alpha-dark);
+    &.open .dropdown-menu {
+        display: block;
     }
+}
+
+.play {
+    width: 100%;
+    background-color: rgba($color-blue, $alpha-dark);
+}
+
+.correct {
+    background-color: $color-green;
+
+    &:after {
+        margin-left: 10px;
+        font-family: 'iconic';
+        font-size: 85%;
+        content: "\e004";
+    }
+}
+
+.wrong {
+    background-color: $color-red;
+
+    &:after {
+        margin-left: 10px;
+        font-family: 'iconic';
+        font-size: 85%;
+        content: "\e005";
+    }
+}
+
+.progress {
+    width: 100%;
+    height: 3px;
+    background-color: $color-red;
+    overflow: hidden;
+
+    .bar {
+        width: 100%;
+        height: 100%;
+        background-color: $color-green;
+        @include transition(all 0.4s);
+    }
+}
+
+.info {
+    margin: 2px;
+    padding: 0.5em 1.5em 0.5em;
+    font-family: sans-serif;
+    @extend .uppercase;
 }
 
 .table {
@@ -222,42 +336,8 @@ a {
         border-top: none;
     }
     th {
-        @extend .uppercase, .muted;
+        @extend .uppercase;
         font-weight: normal;
-    }
-}
-
-#map-canvas {
-    height: 400px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-ul.levels {
-    margin: 0;
-    li {
-        padding-left: 0;
-        padding-right: 0;
-        a {
-            $diameter: 40px;
-
-            display: block;
-            margin: 0 3px;
-            background-color: transparent;
-            overflow: hidden;
-
-            @include circle(40px);
-            @include score($color-green);
-            @include transition(all 0.2s);
-
-            &.score- {
-                @include score($color-blue);
-            }
-
-            &.score-0 {
-                @include score($color-red);
-            }
-        }
     }
 }
 
@@ -286,10 +366,4 @@ ul.levels {
             background-color: $color-green;
         }
     }
-}
-
-.about p {
-    font-size: $fontsize-large;
-    line-height: $fontsize-large * 2;
-    text-align: justify;
 }

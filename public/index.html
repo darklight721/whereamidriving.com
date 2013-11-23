@@ -13,6 +13,7 @@
 
         <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
         <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="bower_components/pure/pure.css">
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
 </head>
@@ -27,24 +28,19 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container">
-        <header>
-            <nav class="pull-right">
-                <ul class="unstyled inline">
-                    <li><a href="#/" watch-for-active>Play</a></li>
-                    <li><a href="#/stats" watch-for-active>Stats</a></li>
-                    <li><a href="#/about" watch-for-active>About</a></li>
-                </ul>
-            </nav>
-            <h1><a href="http://whereamidriving.com">Whereamidriving<span class="icomoon-steering-wheel"></span>com</a></h1>
-        </header>
-        <div class="main" ng-view=""></div>
-        <footer>
-            <a href="https://twitter.com/pr00t" target="_blank">Roy Evan Sia</a>, 2013
+    <header class="fixed-top">
+        <div class="pure-menu pure-menu-open pure-menu-horizontal clearfix">
+            <a href="http://whereamidriving.com" class="pure-menu-heading">whereamidriving <i class="icon-steering-wheel"></i> com</a>
+            <ul>
+                <li><a class="swap" title="play" watch-for-active href="#/"><i class="icon-play"></i></a></li>
+                <li><a class="swap" title="stats" watch-for-active href="#/stats"><i class="icon-bars"></i></a></li>
+                <li><a class="swap" title="about" watch-for-active href="#/about"><i class="icon-user"></i></a></li>
+            </ul>
             <a href="https://twitter.com/share" class="twitter-share-button pull-right" data-lang="en" data-url="http://whereamidriving.com" data-text="Challenge yourself to identify cities from street level! Play now!" data-related="pr00t:Creator of whereamidriving.com" data-count="none">Tweet</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-        </footer>
-    </div>
+        </div>
+    </header>
+    <div class="pure-g-r max-height" ng-view=""></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -61,6 +57,7 @@
     </script>
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
 
         <!-- build:js scripts/plugins.js -->
         <script src="bower_components/bootstrap-sass/js/bootstrap-dropdown.js"></script>
@@ -68,16 +65,16 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/services/engine.js"></script>
-        <script src="scripts/services/record.js"></script>
-        <script src="scripts/services/rating.js"></script>
+        <script src="scripts/services/store.js"></script>
+        <script src="scripts/services/server.js"></script>
+        <script src="scripts/services/session.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/play.js"></script>
         <script src="scripts/controllers/result.js"></script>
         <script src="scripts/controllers/stats.js"></script>
         <script src="scripts/directives/map.js"></script>
-        <script src="scripts/directives/levels.js"></script>
         <script src="scripts/directives/watch-for-active.js"></script>
+        <script src="scripts/directives/life.js"></script>
         <!-- endbuild -->
 </body>
 </html>

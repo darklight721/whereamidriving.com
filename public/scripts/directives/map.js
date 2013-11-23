@@ -3,7 +3,7 @@
 angular.module('GuessApp')
   .directive('map', function () {
     return {
-      template: '<div id="map-canvas"></div>',
+      template: '<div></div>',
       restrict: 'E',
       replace: true,
       scope: { onposchanged: '&', position: '@' },
@@ -17,6 +17,7 @@ angular.module('GuessApp')
         });
 
         scope.$watch('position', function(position) {
+          google.maps.event.clearInstanceListeners(streetView);
           if (!position) return;
 
           position = JSON.parse(position);
@@ -38,10 +39,6 @@ angular.module('GuessApp')
               scope.$apply(function(){ scope.onposchanged() });
             }
           });
-        });
-
-        scope.$on('$destroy', function() {
-          google.maps.event.clearInstanceListeners(streetView);
         });
       }
     };

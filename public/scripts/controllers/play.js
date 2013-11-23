@@ -1,58 +1,52 @@
 'use strict';
 
 angular.module('GuessApp')
-  .controller('PlayCtrl', function ($scope, $routeParams, $location, Engine, Record) {
-
-    $scope.level = parseInt($routeParams['level'], 10) - 1;
+  .controller('PlayCtrl', function ($scope, $location, Session) {
 
     $scope.play = function() {
-      var city = Engine.play($scope.level);
+      var city = Session.play();
       if (city) {
         $scope.city = city;
-        loadAnswerPoints();
+        $scope.answer = null;
       }
       else {
         $location.path('/');
       }
     };
 
-    $scope.updatePoints = function() {
-      if (!$scope.answer && $scope.points) {
-        $scope.points -= 10;
-      }
+    $scope.life = function() {
+      return Session.getLife();
+    };
+
+    $scope.updateLife = function() {
+      if ($scope.answer === null)
+        Session.deductLife(1);
+    };
+
+    $scope.score = function() {
+      return Session.getScore();
     };
 
     $scope.choose = function(answer) {
-      $scope.answer = answer;
+      $scope.answer = {
+        city: answer,
+        correct: Session.answer(answer)
+      };
+    };
 
-      Engine.check($scope.level, answer).then(
-        function(isCorrect) {
-          Record.set($scope.level, {
-            answer: answer,
-            score: isCorrect ? $scope.points : 0
-          });
-          loadAnswerPoints();
-        },
-        function() {
-          $scope.answer = false;
-        }
-      );
+    $scope.state = function(city) {
+      return !$scope.answer || $scope.answer.city !== city ? '' :
+             $scope.answer.correct ? 'correct' :
+             'wrong';
     };
 
     $scope.next = function() {
-      var next = Record.findNextMissing($scope.level);
-      return next >= 0 ? '/play/' + (next + 1) : '/result';
+      if (Session.isOver()) {
+        $location.path('/result');
+      }
+      else {
+        $scope.play();
+      }
     };
-
-    $scope.state = function(answer) {
-      return $scope.answer.answer != answer ? '' :
-             $scope.answer.score > 0 ? 'correct' :
-             'wrong';
-    }
-
-    function loadAnswerPoints() {
-      $scope.answer = Record.get($scope.level);
-      $scope.points = $scope.answer ? $scope.answer.score : 100;
-    }
 
   });

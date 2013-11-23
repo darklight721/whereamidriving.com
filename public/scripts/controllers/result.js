@@ -1,31 +1,23 @@
 'use strict';
 
 angular.module('GuessApp')
-  .controller('ResultCtrl', function ($scope, $location, Record, Rating, Engine) {
+  .controller('ResultCtrl', function ($scope, $location, Session, Server) {
 
     $scope.init = function() {
-      if (Record.count() === 0) {
-        $location.path('/');
+      var stats = Session.getStats();
+      if (Session.isOver() && stats.length) {
+        $scope.score = Session.getScore() + Session.getLife() * 10;
+        Server.submitScore($scope.score, stats);
       }
       else {
-        var missing = Record.findNextMissing();
-        if (missing >= 0) {
-          $location.path('/play/' + (missing + 1));
-          return;
-        }
-
-        $scope.sum = Record.sum();
-        $scope.rating = Rating.get($scope.sum / Record.count());
-        Engine.submitScore($scope.sum);
+        $location.path('/');
       }
     };
 
     $scope.buildTwitterParams = function() {
-      if (!$scope.rating) return '';
-
       var params = [
         ['url', 'http://whereamidriving.com'],
-        ['text', 'I got "' + $scope.rating.rate + '" with a score of ' + $scope.sum + ' in'],
+        ['text', 'Beat my score of ' + $scope.score + ' in'],
         ['related', 'pr00t']
       ];
 

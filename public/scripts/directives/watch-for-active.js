@@ -22,10 +22,10 @@ angular.module('GuessApp')
         }, function(path) {
           var compare = map[attrs.href];
           if (compare && compare(path)) {
-            element.addClass('active');
+            element.parent().addClass('pure-menu-selected');
           }
           else {
-            element.removeClass('active');
+            element.parent().removeClass('pure-menu-selected');
           }
         });
       }

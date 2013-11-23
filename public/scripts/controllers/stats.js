@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('GuessApp')
-  .controller('StatsCtrl', function ($scope, Engine) {
+  .controller('StatsCtrl', function ($scope, Server) {
 
-    $scope.regions = Engine.regions();
-    $scope.stats = Engine.stats();
+    $scope.stats = Server.stats();
 
   });

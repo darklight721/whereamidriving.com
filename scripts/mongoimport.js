@@ -16,6 +16,8 @@ RegionStats.remove({}, function(err) {
   CityStats.remove({}, function(err) {
     if (err) return console.log('Error removing CityStats');
 
+    RegionStats.create({ name: 'All' }, function(err, res) { console.log(res); });
+
     data.forEach(function(data) {
       RegionStats.create({ name: data.region }, function(err, res) { console.log(res); });
 

@@ -7,7 +7,7 @@ angular.module('GuessApp')
 
     $scope.play = function(region) {
       Server.cities(region).then(function(cities) {
-        Session.new(cities);
+        Session.new(cities, region);
         $location.path('/play');
       });
     };

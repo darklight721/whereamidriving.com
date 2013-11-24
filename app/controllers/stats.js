@@ -1,70 +1,52 @@
 var mongoose = require('mongoose'),
-    Stats = mongoose.model('Stats'),
-    City = mongoose.model('City');
+    RegionStats = mongoose.model('RegionStats'),
+    CityStats = mongoose.model('CityStats');
+
+function handleError(res) {
+  res.json(500, { error: 'Error' });
+}
 
 exports.submitScore = function(req, res) {
-  var score = req.body.score;
+  var score = req.body.score,
+      region = req.body.region,
+      stats = req.body.stats;
 
-  if (score == undefined) {
-    res.json(500, { error: 'Error' });
-  }
-  else {
-    Stats.get(function(err, stats) {
-      if (err) {
-        res.json(500, { error: 'Error' });
-        return;
-      }
+  if (score === undefined || region === undefined || stats === undefined)
+    return handleError(res);
 
-      stats.update({ $inc: { total: score, count: 1 } }, function(err) {
-        if (err) {
-          res.json(500, { error: 'Error' });
-        }
-        else {
-          res.json({ message: 'Success' });
-        }
-      });
-    });
-  }
+  RegionStats.update(
+    { name: region },
+    { $inc: { total: score, count: 1 } }
+  ).exec();
+
+  var groupedCities = stats.reduce(function(cities, stats) {
+    cities[stats.correct ? 'correct' : 'wrong'].push(stats.city);
+    return cities;
+  }, { correct: [], wrong: [] });
+
+  CityStats.update(
+    { name: { $in: groupedCities.correct } },
+    { $inc: { stats: 1 } },
+    { multi: true }
+  ).exec();
+
+  CityStats.update(
+    { name: { $in: groupedCities.wrong } },
+    { $inc: { stats: -1 } },
+    { multi: true }
+  ).exec();
+
+  res.json(200);
 };
 
 exports.get = function(req, res) {
-  Stats.get(function(err, stats) {
-    if (err) {
-      res.json(500, { error: 'Error' });
-      return;
-    }
+  RegionStats.find({}, { _id: 0, name: 1, total: 1, count: 1 }, function(err, regionStats) {
+    if (err) return handleError(res);
 
-    var data = {
-      count: stats.count,
-      average: stats.average()
-    };
+    CityStats.find({}, { _id: 0, name: 1, stats: 1 }, function(err, cityStats) {
+      if (err) return handleError(res);
 
-    City.aggregate(
-      { $sort: { stats: 1 } },
-      { $group: {
-          _id: '$region',
-          easiestCity: { $last: '$name' },
-          easiestStats: { $last: '$stats' },
-          hardestCity: { $first: '$name' },
-          hardestStats: { $first: '$stats' }
-        }
-      },
-      function(err, result) {
-        if (err) {
-          res.json(500, { error: 'Error' });
-          return;
-        }
-
-        data.cities = result.reduce(function(memo, result) {
-          memo[result._id] = {
-            easiestCity: { name: result.easiestCity, stats: result.easiestStats },
-            hardestCity: { name: result.hardestCity, stats: result.hardestStats }
-          }
-          return memo;
-        }, {});
-
-        res.json(data);
-      }
-    );
+      res.json({ regionStats: regionStats, cityStats: cityStats });
+    });
   });
 };

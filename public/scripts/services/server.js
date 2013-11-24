@@ -63,8 +63,8 @@ angular.module('GuessApp')
       stats: function() {
         return $http.get('/stats');
       },
-      submitScore: function(score, stats) {
-        return $http.post('/submit_score', { score: score, stats: stats });
+      submitScore: function(score) {
+        return $http.post('/submit_score', score);
       }
     };
   });

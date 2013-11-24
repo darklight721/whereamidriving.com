@@ -1,17 +1,16 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var StatsSchema = new Schema({
-  count: { type: Number, default: 0 },
-  total: { type: Number, default: 0 }
-});
+var RegionStatsSchema = new Schema({
+  name: { type: String, index: true },
+  total: { type: Number, default: 0 },
+  count: { type: Number, default: 0 }
+}, { autoIndex: false });
 
-StatsSchema.method('average', function() {
-  return this.count ? Math.floor(this.total / this.count) : 0;
-});
+var CityStatsSchema = new Schema({
+  name: { type: String, index: true },
+  stats: { type: Number, default: 0 }
+}, { autoIndex: false });
 
-StatsSchema.static('get', function(callback) {
-  return this.findOne({}, callback);
-})
-
-mongoose.model('Stats', StatsSchema);
+mongoose.model('RegionStats', RegionStatsSchema);
+mongoose.model('CityStats', CityStatsSchema);

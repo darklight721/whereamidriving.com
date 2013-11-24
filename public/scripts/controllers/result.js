@@ -7,7 +7,11 @@ angular.module('GuessApp')
       var stats = Session.getStats();
       if (Session.isOver() && stats.length) {
         $scope.score = Session.getScore() + Session.getLife() * 10;
-        Server.submitScore($scope.score, stats);
+        Server.submitScore({
+          score: $scope.score,
+          region: Session.getRegion(),
+          stats: stats
+        });
       }
       else {
         $location.path('/');

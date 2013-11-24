@@ -3,7 +3,9 @@
 angular.module('GuessApp')
   .factory('Session', function () {
     // Service logic
-    var levels = [], current = 0, life = 15, score = 0, stats = [];
+    var levels = [], current = 0,
+        life = 15, score = 0,
+        stats = [], region = '';
 
     function pickRandom(list) {
       return list[_.random(list.length - 1)];
@@ -27,12 +29,13 @@ angular.module('GuessApp')
 
     // Public API here
     return {
-      new: function(cities) {
+      new: function(cities, region_) {
         levels = _.shuffle(cities);
         current = 0;
         life = 15;
         score = 0;
         stats.length = 0;
+        region = region_ || 'All';
       },
       play: function() {
         var level = levels[current];
@@ -52,7 +55,7 @@ angular.module('GuessApp')
 
         if (isCorrect) score += 10;
         else this.deductLife(5);
-        stats.push({ city: currentName, stat: isCorrect ? 1 : -1 });
+        stats.push({ city: currentName, correct: isCorrect });
         current++;
         return isCorrect;
       },
@@ -67,6 +70,9 @@ angular.module('GuessApp')
       },
       getStats: function() {
         return stats;
+      },
+      getRegion: function() {
+        return region;
       },
       isOver: function() {
         return life === 0 || current === levels.length;

@@ -5,57 +5,25 @@ mongoose.connect(config.db);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
-require('../app/models/region');
-require('../app/models/city');
-var data = require('./data'),
-    Region = mongoose.model('Region'),
-    City = mongoose.model('City');
+require('../app/models/stats');
+var RegionStats = mongoose.model('RegionStats'),
+    CityStats = mongoose.model('CityStats'),
+    data = require('../public/data.json');
 
-City.remove({}, function(err) {
-  if (err) {
-    console.log('Error removing existing cities!');
-    return;
-  }
+RegionStats.remove({}, function(err) {
+  if (err) return console.log('Error removing RegionStats');
 
-  Region.remove({}, function(err) {
-    if (err) {
-      console.log('Error removing existing regions!');
-      return;
-    }
+  CityStats.remove({}, function(err) {
+    if (err) return console.log('Error removing CityStats');
 
     data.forEach(function(data) {
-      Region.create({ name: data.region }, function(err, region) {
-        if (err) {
-          console.log('Error populating regions!');
-          return;
-        }
+      RegionStats.create({ name: data.region }, function(err, res) { console.log(res); });
 
-        console.log('Region: ' + region.name + ' created.');
-        data.cities.forEach(function(city) {
-          var _city = new City(city);
-          _city.region = region;
-
-          _city.save(function(err, city) {
-            if (err) console.log('Error populating cities!');
-            else console.log('City: ' + city.name + ' created.');
-          });
-        });
+      data.cities.forEach(function(city) {
+        CityStats.create({ name: city.name }, function(err, res) { console.log(res) });
       });
     });
   });
-})
+});
 
-require('../app/models/stats');
-var Stats = mongoose.model('Stats');
 
-Stats.remove({}, function(err) {
-  if (err) {
-    console.log('Error removing stats table!');
-    return;
-  }
-
-  Stats.create({}, function(err) {
-    if (err) console.log('Error creating stats!');
-    else console.log('Stats: created.');
-  });
-})

@@ -70,7 +70,13 @@ angular.module('GuessApp')
         return deferred.promise;
       },
       submitScore: function(score) {
-        return $http.post('/submit_score', score);
+        var deferred = $q.defer();
+
+        $http.post('/submit_score', score).success(function() {
+          deferred.resolve();
+        }).error(reject(deferred));
+
+        return deferred.promise;
       }
     };
   });

@@ -24,9 +24,10 @@ angular.module('GuessApp')
           streetView.setPosition(new google.maps.LatLng(position.lat, position.lng));
 
           if (position.pov) {
-            var pov = streetView.getPov();
-            pov.heading = position.pov;
-            streetView.setPov(pov);
+            streetView.setPov({
+              heading: position.pov,
+              pitch: 0
+            });
           }
 
           var originalPos = null;

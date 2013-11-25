@@ -79,7 +79,11 @@ angular.module('GuessApp')
         return region;
       },
       isOver: function() {
-        return life === 0 || current === levels.length;
+        return current && (life === 0 || current === levels.length);
       },
+      resetLevels: function() {
+        levels.length = 0;
+        current = 0;
+      }
     };
   });

@@ -14,7 +14,7 @@
         <tbody>
           <tr ng-repeat="stat in stats">
             <td>{{stat.region}}</td>
-            <td>{{(stat.total / stat.count) || 0}}</td>
+            <td>{{(stat.total / stat.count) || 0 | number:0}}</td>
             <td>{{stat.count}}</td>
             <td>{{stat.easiestCity}}</td>
             <td>{{stat.hardestCity}}</td>

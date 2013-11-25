@@ -61,7 +61,13 @@ angular.module('GuessApp')
         return deferred.promise;
       },
       stats: function() {
-        return $http.get('/stats');
+        var deferred = $q.defer();
+
+        $http.get('/stats').success(function(data) {
+          deferred.resolve(data);
+        }).error(reject(deferred));
+
+        return deferred.promise;
       },
       submitScore: function(score) {
         return $http.post('/submit_score', score);

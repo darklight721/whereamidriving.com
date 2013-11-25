@@ -22,7 +22,7 @@ RegionStats.remove({}, function(err) {
       RegionStats.create({ name: data.region }, function(err, res) { console.log(res); });
 
       data.cities.forEach(function(city) {
-        CityStats.create({ name: city.name }, function(err, res) { console.log(res) });
+        CityStats.create({ name: city.name, region: data.region }, function(err, res) { console.log(res) });
       });
     });
   });

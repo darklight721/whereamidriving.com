@@ -50,12 +50,16 @@ angular.module('GuessApp')
         return false;
       },
       answer: function(answer) {
-        var currentName = levels[current].name,
-            isCorrect = answer === currentName;
+        var currentLevel = levels[current] || {},
+            isCorrect = answer === currentLevel.name;
 
         if (isCorrect) score += 10;
         else this.deductLife(5);
-        stats.push({ city: currentName, correct: isCorrect });
+        stats.push({
+          city: currentLevel.name,
+          region: currentLevel.region,
+          correct: isCorrect
+        });
         current++;
         return isCorrect;
       },

@@ -9,6 +9,7 @@ var RegionStatsSchema = new Schema({
 
 var CityStatsSchema = new Schema({
   name: { type: String, index: true },
+  region: { type: String, index: true },
   stats: { type: Number, default: 0 }
 }, { autoIndex: false });
 

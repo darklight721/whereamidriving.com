@@ -1,25 +1,25 @@
 <div class="pure-u-1 max-height">
   <div class="flex-center">
     <div class="stats">
-      <table class="">
-        <tr>
-          <th class="span4">Number of games played</th>
-          <td colspan="2">{{stats.count}}</td>
-        </tr>
-        <tr>
-          <th>Average score</th>
-          <td colspan="2">{{stats.average}}</td>
-        </tr>
-        <tr>
-          <th>Regions</th>
-          <th>Easiest Cities</th>
-          <th>Hardest Cities</th>
-        </tr>
-        <tr ng-repeat="region in regions">
-          <th>{{region.name}}</th>
-          <td>{{stats.cities[region.id].easiestCity.name}}</td>
-          <td>{{stats.cities[region.id].hardestCity.name}}</td>
-        </tr>
+      <table class="pure-table pure-table-horizontal">
+        <thead>
+          <tr>
+            <th>Region</th>
+            <th>Average Score</th>
+            <th>Games</th>
+            <th>Easiest Cities</th>
+            <th>Hardest Cities</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="stat in stats">
+            <td>{{stat.region}}</td>
+            <td>{{(stat.total / stat.count) || 0}}</td>
+            <td>{{stat.count}}</td>
+            <td>{{stat.easiestCity}}</td>
+            <td>{{stat.hardestCity}}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>

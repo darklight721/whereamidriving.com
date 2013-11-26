@@ -6,11 +6,11 @@ angular.module('GuessApp')
     $scope.init = function() {
       if (Session.isOver()) {
         $scope.score = Session.getScore() + Session.getLife() * 10;
-        $scope.stats = Session.getStats();
+        $scope.mistakes = _.where(Session.getStats(), { correct: false });
         Server.submitScore({
           score: $scope.score,
           region: Session.getRegion(),
-          stats: $scope.stats
+          stats: Session.getStats()
         }).then(Session.resetLevels);
       }
       else {

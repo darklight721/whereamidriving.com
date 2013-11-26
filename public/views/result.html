@@ -2,11 +2,11 @@
   <div class="flex-center">
     <div class="result">
       <p class="line">Your total score is: <strong>{{score}}</strong></p>
-      <p ng-show="stats.length">
-        Here are the  mistakes you've made:
+      <p ng-show="mistakes.length">
+        Here are your mistakes:
       </p>
-      <ol>
-        <li ng-repeat="stat in stats | filter:{correct:false}"><a ng-href="{{buildGMapsLink(stat.city)}}">{{stat.city}}</a></li>
+      <ol ng-show="mistakes.length">
+        <li ng-repeat="mistake in mistakes"><a ng-href="{{buildGMapsLink(mistake.city)}}">{{mistake.city}}</a></li>
       </ol>
       <a class="pure-button" target="_blank" ng-href="https://twitter.com/share?{{buildTwitterParams()}}">Tweet Score</a>
       <a class="pure-button" href="#/">Play Again</a>

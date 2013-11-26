@@ -27,5 +27,3 @@ RegionStats.remove({}, function(err) {
     });
   });
 });
-
-

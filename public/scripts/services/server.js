@@ -11,14 +11,15 @@ angular.module('GuessApp')
 
     function get(key) {
       var deferred = $q.defer(),
-          value = isInitialized ? Store.get(key) : null;
+          value = Store.get(key);
 
-      if (value) {
+      if (isInitialized && value) {
         deferred.resolve(value);
       }
       else {
         $http.get('/config.json').success(function(data) {
           var version = data && data.version || undefined;
+
           if (version === Store.get('version') && value) {
             deferred.resolve(value);
             isInitialized = true;

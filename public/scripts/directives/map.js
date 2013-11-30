@@ -14,6 +14,8 @@ angular.module('GuessApp')
           position = JSON.parse(position);
 
           if (streetView) google.maps.event.clearInstanceListeners(streetView);
+          element.empty();
+
           streetView = new google.maps.StreetViewPanorama(element[0], {
             addressControl: false,
             linksControl: false,

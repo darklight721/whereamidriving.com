@@ -6,7 +6,7 @@
         <life count="{{life()}}"></life>
       </div>
       <div class="pure-u-1-5">
-        <div class="padded">
+        <div class="padded pure-hidden-phone">
           <div class="info"><i class="icon-heart-fill" title="Life"></i> {{life()}} / <i class="icon-star" title="Score"></i> {{score()}}</div>
         </div>
       </div>
@@ -20,8 +20,8 @@
         </div>
       </div>
       <div class="pure-u-1-5">
-        <div class="padded">
-          <button class="pure-button max-width" ng-show="answer" ng-click="next()">Next <i class="icon-arrow-right"></i></button>
+        <div class="padded" ng-show="answer">
+          <button class="pure-button max-width" ng-click="next()">Next <i class="icon-arrow-right"></i></button>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-    config = require('../config/config');
+    config = require('../config/config'),
+    _ = require('underscore');
 
 mongoose.connect(config.db);
 var db = mongoose.connection;
@@ -10,20 +11,20 @@ var RegionStats = mongoose.model('RegionStats'),
     CityStats = mongoose.model('CityStats'),
     data = require('../public/data.json');
 
-data.forEach(function(data) {
-  RegionStats.update(
-    { name: data.region },
-    { name: data.region },
-    { upsert: true }
-  ).exec();
+RegionStats.find({}, function(err, regions) {
+  if (err) return console.log('Error querying regions!');
 
-  data.cities.forEach(function(city) {
-    CityStats.update(
-      { name: city.name },
-      { name: city.name, region: data.region },
-      { upsert: true }
-    ).exec();
+  CityStats.find({}, function(err, cities) {
+    if (err) return console.log('Error querying cities!');
+
+    data.forEach(function(data) {
+      if (!_.findWhere(regions, { name: data.region }))
+        RegionStats.create({ name: data.region }, function(err, res) { console.log(res); });
+
+      data.cities.forEach(function(city) {
+        if (!_.findWhere(cities, { name: city.name }))
+          CityStats.create({ name: city.name, region: data.region }, function(err, res) { console.log(res); });
+      });
+    });
   });
 });
-
-console.log('Done.');

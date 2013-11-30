@@ -6,7 +6,7 @@
   }
 
   line {
-    font-family: \0000354;
+    font-family: \0000355;
   }
 }
 
@@ -20,7 +20,7 @@
   }
 
   line {
-    font-family: \0000356;
+    font-family: \0000357;
   }
 }
 
@@ -38,7 +38,7 @@
   }
 
   line {
-    font-family: \0000358;
+    font-family: \0000359;
   }
 }
 
@@ -53,7 +53,7 @@
   }
 
   line {
-    font-family: \0000360;
+    font-family: \0000361;
   }
 }
 
@@ -69,7 +69,7 @@
   }
 
   line {
-    font-family: \0000362;
+    font-family: \0000363;
   }
 }
 
@@ -85,7 +85,7 @@
   }
 
   line {
-    font-family: \0000364;
+    font-family: \0000365;
   }
 }
 
@@ -99,7 +99,7 @@
   }
 
   line {
-    font-family: \0000366;
+    font-family: \0000367;
   }
 }
 
@@ -113,7 +113,7 @@
   }
 
   line {
-    font-family: \0000368;
+    font-family: \0000369;
   }
 }
 
@@ -127,7 +127,7 @@
   }
 
   line {
-    font-family: \0000370;
+    font-family: \0000371;
   }
 }
 
@@ -141,7 +141,7 @@
   }
 
   line {
-    font-family: \0000372;
+    font-family: \0000373;
   }
 }
 
@@ -155,7 +155,7 @@
   }
 
   line {
-    font-family: \0000374;
+    font-family: \0000375;
   }
 }
 
@@ -174,7 +174,7 @@
   }
 
   line {
-    font-family: \0000377;
+    font-family: \0000378;
   }
 }
 
@@ -190,7 +190,7 @@
   }
 
   line {
-    font-family: \0000381;
+    font-family: \0000382;
   }
 }
 
@@ -204,7 +204,7 @@
   }
 
   line {
-    font-family: \0000386;
+    font-family: \0000387;
   }
 }
 
@@ -225,7 +225,7 @@
   }
 
   line {
-    font-family: \0000399;
+    font-family: \00003100;
   }
 }
 
@@ -240,15 +240,33 @@ body {
   }
 
   line {
-    font-family: \00003103;
+    font-family: \00003104;
   }
 }
 
 body {
+  background-color: #5487bb;
   background-image: url("../images/bg.jpg");
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
   color: #f6f6f6;
+}
+
+@media screen and (max-width: 768px) {
+@media -sass-debug-info {
+    filename {
+      font-family: file\:\/\/\/Users\/Roy\/Projects\/gtc\/app\/styles\/main\.scss;
+    }
+
+    line {
+      font-family: \00003104;
+    }
+}
+
+  body {
+    font-size: 80%;
+  }
 }
 
 @media -sass-debug-info {
@@ -257,7 +275,7 @@ body {
   }
 
   line {
-    font-family: \00003110;
+    font-family: \00003117;
   }
 }
 
@@ -271,7 +289,7 @@ header {
   }
 
   line {
-    font-family: \00003114;
+    font-family: \00003121;
   }
 }
 
@@ -286,7 +304,7 @@ a {
   }
 
   line {
-    font-family: \00003119;
+    font-family: \00003126;
   }
 }
 
@@ -300,7 +318,7 @@ button {
   }
 
   line {
-    font-family: \00003123;
+    font-family: \00003130;
   }
 }
 
@@ -314,7 +332,7 @@ th {
   }
 
   line {
-    font-family: \00003127;
+    font-family: \00003134;
   }
 }
 
@@ -328,7 +346,21 @@ ol {
   }
 
   line {
-    font-family: \00003135;
+    font-family: \00003137;
+  }
+}
+
+ol li {
+  text-align: left;
+}
+
+@media -sass-debug-info {
+  filename {
+    font-family: file\:\/\/\/Users\/Roy\/Projects\/gtc\/app\/styles\/main\.scss;
+  }
+
+  line {
+    font-family: \00003146;
   }
 }
 
@@ -344,7 +376,7 @@ body,
   }
 
   line {
-    font-family: \00003139;
+    font-family: \00003150;
   }
 }
 
@@ -358,7 +390,7 @@ body,
   }
 
   line {
-    font-family: \00003142;
+    font-family: \00003153;
   }
 }
 
@@ -373,7 +405,7 @@ body,
   }
 
   line {
-    font-family: \00003148;
+    font-family: \00003159;
   }
 }
 
@@ -387,7 +419,7 @@ body,
   }
 
   line {
-    font-family: \00003152;
+    font-family: \00003163;
   }
 }
 
@@ -401,7 +433,7 @@ body,
   }
 
   line {
-    font-family: \00003157;
+    font-family: \00003168;
   }
 }
 
@@ -415,7 +447,7 @@ body,
   }
 
   line {
-    font-family: \00003160;
+    font-family: \00003171;
   }
 }
 
@@ -429,7 +461,7 @@ body,
   }
 
   line {
-    font-family: \00003163;
+    font-family: \00003174;
   }
 }
 
@@ -437,6 +469,7 @@ body,
   color: #f6f6f6;
   background-color: transparent;
   border: 2px solid #f6f6f6;
+  padding: 0.5em;
 }
 
 @media -sass-debug-info {
@@ -445,7 +478,7 @@ body,
   }
 
   line {
-    font-family: \00003168;
+    font-family: \00003180;
   }
 }
 
@@ -459,7 +492,7 @@ body,
   }
 
   line {
-    font-family: \00003180;
+    font-family: \00003192;
   }
 }
 
@@ -480,7 +513,7 @@ body,
   }
 
   line {
-    font-family: \00003193;
+    font-family: \00003205;
   }
 }
 
@@ -494,7 +527,7 @@ body,
   }
 
   line {
-    font-family: \00003197;
+    font-family: \00003209;
   }
 }
 
@@ -509,7 +542,7 @@ body,
   }
 
   line {
-    font-family: \00003204;
+    font-family: \00003216;
   }
 }
 
@@ -523,7 +556,7 @@ body,
   }
 
   line {
-    font-family: \00003208;
+    font-family: \00003220;
   }
 }
 
@@ -543,13 +576,48 @@ body,
   height: 100%;
 }
 
+@media screen and (max-width: 768px) {
+@media -sass-debug-info {
+    filename {
+      font-family: file\:\/\/\/Users\/Roy\/Projects\/gtc\/app\/styles\/main\.scss;
+    }
+
+    line {
+      font-family: \00003220;
+    }
+}
+
+  .flex-center {
+    display: block;
+    width: 100%;
+    padding-top: 100px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+@media -sass-debug-info {
+    filename {
+      font-family: file\:\/\/\/Users\/Roy\/Projects\/gtc\/app\/styles\/main\.scss;
+    }
+
+    line {
+      font-family: \00003233;
+    }
+}
+
+  .flex-center > div {
+    display: inline-block;
+  }
+}
+
 @media -sass-debug-info {
   filename {
     font-family: file\:\/\/\/Users\/Roy\/Projects\/gtc\/app\/styles\/main\.scss;
   }
 
   line {
-    font-family: \00003215;
+    font-family: \00003239;
   }
 }
 
@@ -568,7 +636,7 @@ body,
   }
 
   line {
-    font-family: \00003220;
+    font-family: \00003244;
   }
 }
 
@@ -589,7 +657,7 @@ body,
   }
 
   line {
-    font-family: \00003229;
+    font-family: \00003253;
   }
 }
 
@@ -607,7 +675,7 @@ body,
   }
 
   line {
-    font-family: \00003238;
+    font-family: \00003262;
   }
 }
 
@@ -627,7 +695,7 @@ body,
   }
 
   line {
-    font-family: \00003244;
+    font-family: \00003268;
   }
 }
 
@@ -641,7 +709,7 @@ body,
   }
 
   line {
-    font-family: \00003249;
+    font-family: \00003273;
   }
 }
 
@@ -655,7 +723,7 @@ body,
   }
 
   line {
-    font-family: \00003252;
+    font-family: \00003276;
   }
 }
 
@@ -672,7 +740,7 @@ body,
   }
 
   line {
-    font-family: \00003255;
+    font-family: \00003279;
   }
 }
 
@@ -687,7 +755,7 @@ body,
   }
 
   line {
-    font-family: \00003261;
+    font-family: \00003285;
   }
 }
 
@@ -710,7 +778,7 @@ body,
   }
 
   line {
-    font-family: \00003274;
+    font-family: \00003298;
   }
 }
 
@@ -728,7 +796,7 @@ body,
   }
 
   line {
-    font-family: \00003282;
+    font-family: \00003306;
   }
 }
 
@@ -742,7 +810,7 @@ body,
   }
 
   line {
-    font-family: \00003287;
+    font-family: \00003311;
   }
 }
 
@@ -758,7 +826,7 @@ body,
   }
 
   line {
-    font-family: \00003295;
+    font-family: \00003319;
   }
 }
 
@@ -772,7 +840,7 @@ body,
   }
 
   line {
-    font-family: \00003300;
+    font-family: \00003324;
   }
 }
 
@@ -787,7 +855,7 @@ body,
   }
 
   line {
-    font-family: \00003305;
+    font-family: \00003329;
   }
 }
 
@@ -801,7 +869,7 @@ body,
   }
 
   line {
-    font-family: \00003308;
+    font-family: \00003332;
   }
 }
 
@@ -818,7 +886,7 @@ body,
   }
 
   line {
-    font-family: \00003316;
+    font-family: \00003340;
   }
 }
 
@@ -832,7 +900,7 @@ body,
   }
 
   line {
-    font-family: \00003319;
+    font-family: \00003343;
   }
 }
 
@@ -849,7 +917,7 @@ body,
   }
 
   line {
-    font-family: \00003327;
+    font-family: \00003351;
   }
 }
 
@@ -866,7 +934,7 @@ body,
   }
 
   line {
-    font-family: \00003333;
+    font-family: \00003357;
   }
 }
 
@@ -882,7 +950,7 @@ body,
   }
 
   line {
-    font-family: \00003341;
+    font-family: \00003365;
   }
 }
 

@@ -253,7 +253,7 @@ body {
   color: #f6f6f6;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
 @media -sass-debug-info {
     filename {
       font-family: file\:\/\/\/Users\/Roy\/Projects\/gtc\/app\/styles\/main\.scss;
@@ -576,7 +576,7 @@ body,
   height: 100%;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
 @media -sass-debug-info {
     filename {
       font-family: file\:\/\/\/Users\/Roy\/Projects\/gtc\/app\/styles\/main\.scss;

@@ -20,6 +20,24 @@ var _ = require('underscore'),
     currentCity = '',
     parsers = [
       {
+        rx: /region:\s*(\w.*\w)/i,
+        exec: function(line) {
+          var matches = this.rx.exec(line);
+          if (!matches || matches.length !== 2) return false;
+          currentRegion = matches[1];
+          return true;
+        }
+      },
+      {
+        rx: /city:\s*(\w.*\w)/i,
+        exec: function(line) {
+          var matches = this.rx.exec(line);
+          if (!matches || matches.length !== 2) return false;
+          currentCity = matches[1];
+          return true;
+        }
+      },
+      {
         rx: /!2d(-?\d+\.?\d*)!3d(-?\d+\.?\d*)!2m2!1f(-?\d+\.?\d*)/,
         exec: function(line) {
           var matches = this.rx.exec(line);
@@ -34,25 +52,11 @@ var _ = require('underscore'),
             city = { name: currentCity, positions: [] };
             region.cities.push(city);
           }
-          city.positions.push({ lng: matches[1], lat: matches[2], pov: matches[3] });
-          return true;
-        }
-      },
-      {
-        rx: /city:\s*(\w.*\w)/i,
-        exec: function(line) {
-          var matches = this.rx.exec(line);
-          if (!matches || matches.length !== 2) return false;
-          currentCity = matches[1];
-          return true;
-        }
-      },
-      {
-        rx: /region:\s*(\w.*\w)/i,
-        exec: function(line) {
-          var matches = this.rx.exec(line);
-          if (!matches || matches.length !== 2) return false;
-          currentRegion = matches[1];
+          city.positions.push({
+            lng: parseFloat(matches[1]),
+            lat: parseFloat(matches[2]),
+            pov: parseFloat(matches[3])
+          });
           return true;
         }
       }

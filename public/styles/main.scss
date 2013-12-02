@@ -368,3 +368,7 @@ body,
     font-family: sans-serif;
     @extend .uppercase;
 }
+
+.gm-style img {
+    max-width: none;
+}

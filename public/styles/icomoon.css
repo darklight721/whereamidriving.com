@@ -1,17 +1,17 @@
 @font-face {
-	font-family: 'iconic';
-	src:url('fonts/iconic.eot');
-	src:url('fonts/iconic.eot?#iefix') format('embedded-opentype'),
-		url('fonts/iconic.woff') format('woff'),
-		url('fonts/iconic.ttf') format('truetype'),
-		url('fonts/iconic.svg#iconic') format('svg');
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot');
+	src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.woff') format('woff'),
+		url('fonts/icomoon.ttf') format('truetype'),
+		url('fonts/icomoon.svg#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 /* Use the following CSS code if you want to use data attributes for inserting your icons */
 [data-icon]:before {
-	font-family: 'iconic';
+	font-family: 'icomoon';
 	content: attr(data-icon);
 	speak: none;
 	font-weight: normal;
@@ -28,8 +28,8 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-steering-wheel, .icon-play, .icon-bars, .icon-user, .icon-check-alt, .icon-x-altx-alt, .icon-heart-fill, .icon-star, .icon-arrow-right {
-	font-family: 'iconic';
+.icon-steering-wheel, .icon-play, .icon-bars, .icon-user, .icon-heart-fill, .icon-star, .icon-arrow-right, .icon-checkmark, .icon-x, .icon-twitter, .icon-facebook {
+	font-family: 'icomoon';
 	speak: none;
 	font-size: 85%;
 	font-style: normal;
@@ -51,12 +51,6 @@ you can use the generic selector below, but it's slower:
 .icon-user:before {
 	content: "\e003";
 }
-.icon-check-alt:before {
-	content: "\e004";
-}
-.icon-x-altx-alt:before {
-	content: "\e005";
-}
 .icon-heart-fill:before {
 	content: "\e006";
 }
@@ -65,4 +59,16 @@ you can use the generic selector below, but it's slower:
 }
 .icon-arrow-right:before {
 	content: "\e008";
+}
+.icon-checkmark:before {
+	content: "\e004";
+}
+.icon-x:before {
+	content: "\e005";
+}
+.icon-twitter:before {
+	content: "\e009";
+}
+.icon-facebook:before {
+	content: "\e00a";
 }

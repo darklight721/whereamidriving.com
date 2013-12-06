@@ -1,7 +1,3 @@
-// *** imports ***
-
-@import "icomoon.css";
-
 // *** variables ***
 
 $bgImagePath: "../images/bg.jpg";
@@ -17,8 +13,8 @@ $radius: 4px;
 $fontsize-small: 12px;
 $fontsize-medium: 14px;
 $fontsize-large: 16px;
-$color-shadow: rgba(#000, 0.1);
 $phone: 767px;
+$box-shadow: 0 2px 5px -1px rgba(#000, $alpha-light);
 
 // *** mixins ***
 
@@ -116,6 +112,7 @@ body {
 
 header {
     width: 100%;
+    box-shadow: $box-shadow;
 }
 
 a {
@@ -176,6 +173,7 @@ body,
     background-color: transparent;
     border: 2px solid $color-white;
     padding: 0.5em;
+    box-shadow: $box-shadow;
 
     &:disabled {
         border: 2px solid transparent;
@@ -213,8 +211,13 @@ body,
     }
 }
 
-.twitter-share-button {
-    padding: 6px 20px;
+ul.share-buttons {
+    margin: 0 20px;
+
+    li a i {
+        vertical-align: middle;
+        font-size: 100%;
+    }
 }
 
 .flex-center {
@@ -240,6 +243,7 @@ body,
     background-color: rgba($color-blue, $alpha-light);
     border-radius: 2px;
     padding: 10px;
+    box-shadow: $box-shadow;
 
     p {
         text-align: justify;
@@ -288,7 +292,7 @@ body,
         margin: 3px 0 0 0;
         padding: 5px 0;
         border-radius: 4px;
-        box-shadow: 0 5px 10px $color-shadow;
+        box-shadow: $box-shadow;
         background-color: rgba($color-white, $alpha-dark);
         color: $color-blue;
         z-index: 99;
@@ -331,7 +335,7 @@ body,
 
     &:after {
         margin-left: 10px;
-        font-family: 'iconic';
+        font-family: 'icomoon';
         font-size: 85%;
         content: "\e004";
     }
@@ -342,7 +346,7 @@ body,
 
     &:after {
         margin-left: 10px;
-        font-family: 'iconic';
+        font-family: 'icomoon';
         font-size: 85%;
         content: "\e005";
     }
@@ -353,6 +357,7 @@ body,
     height: 3px;
     background-color: $color-red;
     overflow: hidden;
+    box-shadow: $box-shadow;
 
     .bar {
         width: 100%;

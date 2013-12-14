@@ -10,7 +10,8 @@ var RegionStatsSchema = new Schema({
 var CityStatsSchema = new Schema({
   name: { type: String, index: true },
   region: { type: String, index: true },
-  stats: { type: Number, default: 0 }
+  counter: { type: Number, default: 1 },
+  stats: { type: Number, default: 1 }
 }, { autoIndex: false });
 
 mongoose.model('RegionStats', RegionStatsSchema);

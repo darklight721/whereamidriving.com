@@ -27,13 +27,13 @@ exports.submitScore = function(req, res) {
 
   CityStats.update(
     { name: { $in: groupedCities.correct } },
-    { $inc: { stats: 1 } },
+    { $inc: { counter: 1, stats: 1 } },
     { multi: true }
   ).exec();
 
   CityStats.update(
     { name: { $in: groupedCities.wrong } },
-    { $inc: { stats: -1 } },
+    { $inc: { counter: 1 } },
     { multi: true }
   ).exec();
 
@@ -41,45 +41,16 @@ exports.submitScore = function(req, res) {
 };
 
 exports.get = function(req, res) {
-  RegionStats.find({}, function(err, regionStats) {
+  RegionStats.find({}, 'name total count', function(err, regionStats) {
     if (err) return handleError(res);
 
-    CityStats.aggregate(
-      { $sort: { stats: 1 } },
-      { $group: {
-          _id: '$region',
-          easiestCity: { $last: '$name' },
-          easiestStats: { $last: '$stats' },
-          hardestCity: { $first: '$name' },
-          hardestStats: { $first: '$stats' }
-        }
-      },
-      function(err, result) {
-        if (err) handleError(res);
+    CityStats.find({}, 'name region counter stats', function(err, cityStats) {
+      if (err) return handleError(res);
 
-        var stats = result.reduce(function(stats, result) {
-          var region = _.findWhere(regionStats, { name: result._id });
-          if (region) {
-            stats.push(_.extend({
-              region: result._id,
-              easiestCity: result.easiestCity,
-              hardestCity: result.hardestCity
-            }, _.pick(region, 'total', 'count')));
-          }
-          return stats;
-        }, []);
-
-        var allRegion = _.findWhere(regionStats, { name: 'All' });
-        if (allRegion) {
-          stats.push(_.extend({
-            region: allRegion.name,
-            easiestCity: _.max(result, function(result) { return result.easiestStats }).easiestCity,
-            hardestCity: _.min(result, function(result) { return result.hardestStats }).hardestCity
-          }, _.pick(allRegion, 'total', 'count')));
-        }
-
-        res.json(stats);
-      }
-    );
+      res.json({
+        regionStats: regionStats,
+        cityStats: cityStats
+      });
+    });
   });
 };

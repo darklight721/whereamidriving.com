@@ -1,0 +1,89 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <base href="/">
+    <title>WhereAmIDriving.com</title>
+    <meta name="description" content="Challenge yourself to identify cities from a street level perspective using Google's StreetView.">
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Where Am I Driving?">
+    <meta property="og:site_name" content="WhereAmIDriving.com">
+    <meta property="og:url" content="http://www.whereamidriving.com">
+    <meta property="og:description" content="Drive the car. Explore the view. Identify the city. Play the game at WhereAmIDriving.com">
+    <meta property="og:image" content="http://www.whereamidriving.com/images/screenshot.jpg">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+        <!-- build:css({.tmp,app}) styles/main.css -->
+        <link rel="stylesheet" href="bower_components/pure/pure.css">
+        <link rel="stylesheet" href="styles/icomoon.css">
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+</head>
+  <body ng-app="whereAmIdrivingApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src="bower_components/es5-shim/es5-shim.js"></script>
+      <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <header class="fixed-top">
+        <div class="pure-menu pure-menu-open pure-menu-horizontal clearfix">
+            <ul class="pull-right share-buttons">
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwhereamidriving.com" target="_blank" class="swap" title="Share"><i class="icon-facebook"></i></a></li>
+                <li><a href="https://twitter.com/share?url=http%3A%2F%2Fwhereamidriving.com&text=Drive+the+car.+Explore+the+view.+Identify+the+city.+Play+the+game+at" target="_blank" class="swap" title="Tweet"><i class="icon-twitter"></i></a></li>
+            </ul>
+            <a href="http://whereamidriving.com" class="pure-menu-heading">whereamidriving <i class="icon-steering-wheel"></i> com</a>
+            <ul>
+                <li><a class="swap" title="play" watch-for-active href="#/"><i class="icon-play"></i></a></li>
+                <li><a class="swap" title="stats" watch-for-active href="#/stats"><i class="icon-bars"></i></a></li>
+                <li><a class="swap" title="about" watch-for-active href="#/about"><i class="icon-user"></i></a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="pure-g-r max-height" ng-view=""></div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-44286880-1', 'whereamidriving.com');
+       ga('send', 'pageview');
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7UCIJmxf5g5UkM-Yj4JFFIfHLDnbv__Q&sensor=false"></script>
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+
+        <!-- build:js(app) scripts/modules.js -->
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/bootstrap/js/dropdown.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/services/store.js"></script>
+        <script src="scripts/services/server.js"></script>
+        <script src="scripts/services/session.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/play.js"></script>
+        <script src="scripts/controllers/result.js"></script>
+        <script src="scripts/controllers/stats.js"></script>
+        <script src="scripts/directives/map.js"></script>
+        <script src="scripts/directives/watch-for-active.js"></script>
+        <script src="scripts/directives/life.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

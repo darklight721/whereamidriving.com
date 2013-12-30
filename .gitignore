@@ -1,3 +1,8 @@
 node_modules
-public/bower_components
+public
+views
+.tmp
+.sass-cache
+app/bower_components
+heroku
 .DS_Store

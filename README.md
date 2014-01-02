@@ -1,17 +1,18 @@
 WhereAmIDriving.com
 ===================
 
-A guess-the-city type of game using Google Maps' StreetView API.
+A guess-the-city type of game using Google Maps' StreetView API.  
 Check it out at http://www.whereamidriving.com.  
-This app was created using the [MEAN](mean.io) (MongoDB, Express, Angular, Node) stack.
-A big thanks to [Yeoman](yeoman.io) (with generator-angular-fullstack installed) for providing the MEAN code templates!  
+
+This app was created using the [MEAN](mean.io) (MongoDB, Express, Angular, Node) stack.  
+A big thanks to [Yeoman](yeoman.io) (with generator-angular-fullstack installed) for providing the MEAN code templates!
+
 The following will guide you how to get this thing up and running.
 
 Documentation
 -------------
 
 1. First you must have these installed:
-    
     * Node.js
     * MongoDB
     * Git
@@ -32,20 +33,18 @@ Documentation
         node scripts/resetStats.js
 
 5. Here are some grunt tasks to make life easier:
-
     * To preview your changes *(will autoreload the browser if you make changes in your codes while this is still running)*
 
             grunt serve
-
     * To preview the app ready for production *(minimized and optimized version)*
 
             grunt serve:dist
-
     * To build the app for production
 
             grunt build
 
-6. To add new cities
+6. To add new cities:
+
     Open a new text file and follow the format below:
 
         region: <Region>

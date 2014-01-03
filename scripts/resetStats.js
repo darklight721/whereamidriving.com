@@ -1,11 +1,18 @@
+if (process.argv.length < 3) {
+  console.log('Missing parameter!');
+  process.exit(1);
+}
+
 var mongoose = require('mongoose'),
-    db = require('./mongo').mongoose.connection;
+    db = require('../lib/db/mongo').mongoose.connection;
 
 db.once('open', function() {
-  require('../models/stats');
+  require('../lib/models/stats');
+
   var RegionStats = mongoose.model('RegionStats'),
       CityStats = mongoose.model('CityStats'),
-      data = require('../../app/data.json');
+      fs = require('fs'),
+      data = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 
   RegionStats.remove({}, function(err) {
     if (err) return console.log('Error removing RegionStats');

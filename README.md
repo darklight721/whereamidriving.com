@@ -30,7 +30,7 @@ Documentation
 4. Run and fill up the DB with initial data
 
         mongod
-        node scripts/resetStats.js
+        node scripts/resetStats.js app/data.json
 
 5. Here are some grunt tasks to make life easier:
     * To preview your changes *(will autoreload the browser if you make changes in your codes while this is still running)*
@@ -61,6 +61,6 @@ Documentation
     Run this command *(be sure to substitule /path/to/textfile to the location of the file you just created)*
 
         node scripts/updateData.js /path/to/textfile
-        node scripts/updateStats.js
+        node scripts/updateStats.js app/data.json
 
 7. And that's it! Feel free to make any changes and upload your own version. You can also contact me if you've seen a bug or anything.

@@ -6,7 +6,7 @@ if (process.argv.length < 3) {
 var _ = require('underscore'),
     fs = require('fs'),
     // get data
-    dataFileName = __dirname + '/../../app/data.json',
+    dataFileName = __dirname + '/../app/data.json',
     data = JSON.parse(fs.readFileSync(dataFileName, 'utf8')),
     // get input data
     textFileName = process.argv[2],

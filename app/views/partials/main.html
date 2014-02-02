@@ -1,17 +1,19 @@
-<div class="pure-u-1 max-height">
-  <div class="flex-center">
-    <div class="main text-center">
-      <button title="Play" class="pure-button play-button icon-play" ng-click="play()"></button>
-      <div class="dropdown">
-        <button class="pure-button dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li class="disabled"><a href="">Regions</a></li>
-          <li ng-repeat="region in regions"><a href="" ng-click="play(region)">{{ region }}</a></li>
-        </ul>
+<div class="flex-center main">
+  <div class="flex-wrapper">
+    <div class="pure-g-r">
+      <div class="pure-u-1 jumbotron">
+        <h1>Where am I driving?</h1>
+        <p>Identify as many cities as you can from these streetview images.</p>
+        <button ng-click="play()">Start Playing! <i class="icon-chevron-sign-right"></i></button>
+        <div class="dropdown">
+          <ul class="dropdown-menu">
+            <li class="disabled"><a href="">Regions</a></li>
+            <li ng-repeat="region in regions"><a href="" ng-click="play(region)">{{ region }}</a></li>
+          </ul>
+        </div>
       </div>
-      <p>
-        Drive the car. Explore the view. Identify the city.
-      </p>
     </div>
   </div>
 </div>
+<nav active="main"></nav>
+

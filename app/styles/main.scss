@@ -7,6 +7,7 @@ $color-green: #27ae60;
 $color-yellow: #ceb484;
 $color-red: #e74c3c;
 $color-orange: #e67e22;
+$color-aquamarine: #7ac0bd;
 $color-black: #34495e;
 $alpha-light: 0.3;
 $alpha-medium: 0.6;
@@ -17,6 +18,9 @@ $fontsize-medium: 14px;
 $fontsize-large: 16px;
 $phone: 767px;
 $box-shadow: 0 2px 5px -1px rgba(#000, $alpha-light);
+
+$color-fill: $color-aquamarine;
+$color-stroke: $color-white;
 
 // *** mixins ***
 
@@ -242,7 +246,7 @@ ul.share-buttons {
 
 .flex-wrapper, .main, .about, .result, .stats {
     //background-color: rgba($color-blue, $alpha-light);
-    border-radius: 2px;
+    //border-radius: 2px;
     //padding: 10px;
     //box-shadow: $box-shadow;
 
@@ -257,26 +261,58 @@ ul.share-buttons {
 .jumbotron {
     text-align: center;
 
-    h1 {
+    .title {
         margin: 0;
         font-size: 300%;
-        text-shadow: 1px 1px 5px rgba($color-orange, $alpha-medium);
+        color: $color-stroke;
         @extend .uppercase;
     }
 
-    p {
+    .sub-title {
         text-align: center;
-        text-shadow: 1px 1px 5px rgba($color-orange, $alpha-medium);
     }
 
-    button {
+    .action {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
         padding: 1em 3em;
-        font-size: 125%;
-        background-color: $color-orange;
         border: none;
         border-radius: 2px;
-        color: $color-white;
+        font-size: 125%;
+        color: $color-stroke;
+        background-color: $color-fill;
         box-shadow: $box-shadow;
+        box-sizing: border-box;
+        @extend .animate-all;
+
+        &:hover {
+            background-color: darken($color-fill, 10%);
+        }
+    }
+
+    .dropdown {
+        box-sizing: border-box;
+        width: 50%;
+    }
+
+    .sub-action {
+        box-sizing: border-box;
+        width: 100%;
+        margin-top: 10px;
+        padding: 1em 3em;
+        font-size: 80%;
+        letter-spacing: 0.25em;
+        background-color: $color-stroke;
+        border: none;
+        border-radius: 2px;
+        color: $color-fill;
+        box-shadow: $box-shadow;
+        @extend .uppercase, .animate-all;
+
+        &:hover {
+            background-color: darken($color-stroke, 10%);
+        }
     }
 }
 
@@ -289,11 +325,11 @@ ul.share-buttons {
     a {
         margin-left: 5px;
         font-size: 160%;
-        color: $color-white;
+        color: $color-stroke;
         @extend .animate-all;
 
         &:hover {
-            color: $color-orange;
+            color: $color-fill;
         }
     }
 }
@@ -309,8 +345,8 @@ ul.share-buttons {
         display: block;
         padding: 1em;
         text-align: center;
-        color: $color-white;
-        background-color: $color-orange;
+        color: $color-stroke;
+        background-color: $color-fill;
         box-shadow: $box-shadow inset;
 
         .nav-icon {
@@ -369,11 +405,11 @@ ul.share-buttons {
 
     .nav-item {
         &:first-of-type .nav {
-            background-color: lighten($color-orange, 10%);
+            background-color: lighten($color-fill, 10%);
         }
 
         &:last-of-type .nav {
-            background-color: darken($color-orange, 10%);
+            background-color: darken($color-fill, 10%);
         }
     }
 }

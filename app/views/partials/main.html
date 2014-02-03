@@ -4,16 +4,28 @@
       <div class="pure-u-1 jumbotron">
         <h1 class="title">Where am I driving?</h1>
         <p class="sub-title">Identify as many cities as you can from these streetview images.</p>
-        <button class="action" ng-click="play()">Start Playing! <i class="icon-chevron-sign-right"></i></button>
-        <div class="dropdown">
-          <button class="sub-action">All Regions</button>
-          <ul class="dropdown-menu">
-            <li class="disabled"><a href="">Regions</a></li>
-            <li ng-repeat="region in regions"><a href="" ng-click="play(region)">{{ region }}</a></li>
-          </ul>
-        </div>
-        <div class="dropdown">
-          <button class="sub-action">3 streets 1 city</button>
+        <a class="action" ng-click="play()">Start Playing! <i class="icon-chevron-sign-right"></i></a>
+        <div class="pure-g-r">
+          <div class="pure-u-1-2">
+            <div class="dropdown">
+              <button class="sub-action">
+                <i class="icon-earth pull-right"></i>
+                All Regions
+              </button>
+              <ul class="dropdown-menu">
+                <li class="disabled"><a href="">Regions</a></li>
+                <li ng-repeat="region in regions"><a href="" ng-click="play(region)">{{ region }}</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="pure-u-1-2">
+            <div class="dropdown">
+              <button class="sub-action">
+                <i class="icon-binoculars pull-right"></i>
+                3 streets 1 city
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

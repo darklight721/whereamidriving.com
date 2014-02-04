@@ -264,10 +264,12 @@ ul.share-buttons {
         margin: 0;
         font-size: 300%;
         color: $color-stroke;
+        text-shadow: 0 0.1em 0 lighten($color-fill, 10%);
         @extend .uppercase;
     }
 
     .sub-title {
+        text-shadow: 0 0.1em 0 lighten($color-fill, 10%);
         text-align: center;
     }
 

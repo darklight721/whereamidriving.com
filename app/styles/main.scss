@@ -277,6 +277,7 @@ ul.share-buttons {
         border-radius: 2px;
         box-shadow: $box-shadow;
         box-sizing: border-box;
+        outline: none;
         @extend .animate-all;
     }
 
@@ -293,16 +294,10 @@ ul.share-buttons {
         }
     }
 
-    .dropdown {
-        box-sizing: border-box;
-        display: block;
-        margin: 0 5px 5px;
-    }
-
     .sub-action {
         position: relative;
         width: 100%;
-        padding: 1em 1em;
+        padding: 1em;
         font-size: 80%;
         letter-spacing: 0.25em;
         background-color: $color-stroke;
@@ -310,7 +305,8 @@ ul.share-buttons {
         @extend .uppercase;
 
         &:hover {
-            background-color: darken($color-stroke, 10%);
+            color: $color-stroke;
+            background-color: $color-fill !important;
         }
     }
 
@@ -332,6 +328,51 @@ ul.share-buttons {
 
         &.right {
             right: 1em;
+        }
+    }
+
+    .dropdown {
+        position: relative;
+        display: block;
+        margin: 0 5px 5px;
+
+        .dropdown-menu {
+            display: block;
+            border-radius: 0 0 2px 2px;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: $color-stroke;
+            box-shadow: $box-shadow;
+            letter-spacing: 0.25em;
+            transform: scaleY(0);
+            transform-origin: top;
+            @extend .uppercase, .animate-all;
+
+            a {
+                display: block;
+                padding: 1em;
+                color: $color-fill;
+                font-size: 80%;
+                text-align: center;
+                border-top: solid 1px rgba($color-fill, $alpha-light);
+                @extend .animate-all;
+
+                &:hover {
+                    color: $color-stroke;
+                    background-color: $color-fill !important;
+                }
+            }
+        }
+
+        &:hover {
+            .sub-action {
+                border-radius: 2px 2px 0 0;
+            }
+
+            .dropdown-menu {
+                transform: scaleY(1);
+            }
         }
     }
 }

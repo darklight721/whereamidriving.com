@@ -13,6 +13,9 @@
                 <i class="action-icon right icon-menu"></i>
                 <span class="action-text">Panoramic</span>
               </button>
+              <ul class="dropdown-menu">
+                <li><a href="">3 Streets 1 City</a></li>
+              </ul>
             </div>
           </div>
           <div class="pure-u-1-2">
@@ -23,7 +26,6 @@
                 <span class="action-text">All</span>
               </button>
               <ul class="dropdown-menu">
-                <li class="disabled"><a href="">Regions</a></li>
                 <li ng-repeat="region in regions"><a href="" ng-click="play(region)">{{ region }}</a></li>
               </ul>
             </div>

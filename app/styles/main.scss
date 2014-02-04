@@ -84,7 +84,7 @@ $color-stroke: $color-white;
     width: 0;
     height: 0;
     vertical-align: top;
-    border-top: 4px solid #000000;
+    border-top: 4px solid $color-fill;
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
     content: "";
@@ -260,8 +260,6 @@ ul.share-buttons {
 }
 
 .jumbotron {
-    text-align: center;
-
     .title {
         margin: 0;
         font-size: 300%;
@@ -273,18 +271,22 @@ ul.share-buttons {
         text-align: center;
     }
 
+    .action, .sub-action {
+        text-align: center;
+        border: none;
+        border-radius: 2px;
+        box-shadow: $box-shadow;
+        box-sizing: border-box;
+        @extend .animate-all;
+    }
+
     .action {
         display: block;
         margin: 20px 5px 10px 5px;
         padding: 1em 3em;
-        border: none;
-        border-radius: 2px;
         font-size: 125%;
         color: $color-stroke;
         background-color: $color-fill;
-        box-shadow: $box-shadow;
-        box-sizing: border-box;
-        @extend .animate-all;
 
         &:hover {
             background-color: darken($color-fill, 10%);
@@ -298,20 +300,38 @@ ul.share-buttons {
     }
 
     .sub-action {
-        box-sizing: border-box;
+        position: relative;
         width: 100%;
-        padding: 1em 3em;
+        padding: 1em 1em;
         font-size: 80%;
         letter-spacing: 0.25em;
         background-color: $color-stroke;
-        border: none;
-        border-radius: 2px;
         color: $color-fill;
-        box-shadow: $box-shadow;
-        @extend .uppercase, .animate-all;
+        @extend .uppercase;
 
         &:hover {
             background-color: darken($color-stroke, 10%);
+        }
+    }
+
+    .action-text {
+        display: block;
+        margin: auto;
+        width: 90%;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .action-icon {
+        position: absolute;
+        font-size: 100%;
+
+        &.left {
+            left: 1em;
+        }
+
+        &.right {
+            right: 1em;
         }
     }
 }

@@ -9,21 +9,23 @@
           <div class="pure-u-1-2">
             <div class="dropdown">
               <button class="sub-action">
-                <i class="icon-earth pull-right"></i>
-                All Regions
+                <i class="action-icon left icon-binoculars"></i>
+                <i class="action-icon right icon-menu"></i>
+                <span class="action-text">Panoramic</span>
               </button>
-              <ul class="dropdown-menu">
-                <li class="disabled"><a href="">Regions</a></li>
-                <li ng-repeat="region in regions"><a href="" ng-click="play(region)">{{ region }}</a></li>
-              </ul>
             </div>
           </div>
           <div class="pure-u-1-2">
             <div class="dropdown">
               <button class="sub-action">
-                <i class="icon-binoculars pull-right"></i>
-                3 streets 1 city
+                <i class="action-icon left icon-earth"></i>
+                <i class="action-icon right icon-menu"></i>
+                <span class="action-text">All</span>
               </button>
+              <ul class="dropdown-menu">
+                <li class="disabled"><a href="">Regions</a></li>
+                <li ng-repeat="region in regions"><a href="" ng-click="play(region)">{{ region }}</a></li>
+              </ul>
             </div>
           </div>
         </div>

@@ -1,0 +1,10 @@
+<div class="dropdown">
+  <button class="sub-action">
+    <i class="action-icon left {{icon}}"></i>
+    <i class="action-icon right icon-menu"></i>
+    <span class="action-text">{{selected}}</span>
+  </button>
+  <ul class="dropdown-menu">
+    <li ng-repeat="option in options | exclude:selected"><a ng-click="select(option)">{{option}}</a></li>
+  </ul>
+</div>

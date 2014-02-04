@@ -7,28 +7,10 @@
         <a class="action" ng-click="play()">Start Playing! <i class="icon-chevron-sign-right"></i></a>
         <div class="pure-g-r">
           <div class="pure-u-1-2">
-            <div class="dropdown">
-              <button class="sub-action">
-                <i class="action-icon left icon-binoculars"></i>
-                <i class="action-icon right icon-menu"></i>
-                <span class="action-text">Panoramic</span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a href="">3 Streets 1 City</a></li>
-              </ul>
-            </div>
+            <dropdown options="modes" selected="mode" icon="icon-binoculars" />
           </div>
           <div class="pure-u-1-2">
-            <div class="dropdown">
-              <button class="sub-action">
-                <i class="action-icon left icon-earth"></i>
-                <i class="action-icon right icon-menu"></i>
-                <span class="action-text">All</span>
-              </button>
-              <ul class="dropdown-menu">
-                <li ng-repeat="region in regions"><a href="" ng-click="play(region)">{{ region }}</a></li>
-              </ul>
-            </div>
+            <dropdown options="regions" selected="region" icon="icon-earth" />
           </div>
         </div>
       </div>

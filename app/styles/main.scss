@@ -273,110 +273,97 @@ ul.share-buttons {
         text-align: center;
     }
 
-    .action, .sub-action {
-        text-align: center;
-        border: none;
-        border-radius: 2px;
-        box-shadow: $box-shadow;
-        box-sizing: border-box;
-        outline: none;
-        @extend .animate-all;
-    }
-
     .action {
         display: block;
         margin: 20px 5px 10px 5px;
         padding: 1em 3em;
+        border-radius: 2px;
+        box-shadow: $box-shadow;
+        outline: none;
+        border: none;
         font-size: 125%;
+        text-align: center;
         color: $color-stroke;
         background-color: $color-fill;
+        @extend .animate-all;
 
         &:hover {
             background-color: darken($color-fill, 10%);
         }
     }
+}
 
-    .sub-action {
-        position: relative;
-        width: 100%;
-        padding: 1em;
-        font-size: 80%;
-        letter-spacing: 0.25em;
-        background-color: $color-stroke;
-        color: $color-fill;
-        @extend .uppercase;
+.dropdown {
+  position: relative;
+  display: block;
+  margin: 0 5px 5px;
+  $border-radius: 2px;
 
-        &:hover {
-            color: $color-stroke;
-            background-color: $color-fill !important;
-        }
+  .dropdown-item {
+    display: block;
+    margin: 0;
+    padding: 1em;
+    border: none;
+    border-top: solid 1px transparent;
+    outline: none;
+    font-size: 80%;
+    letter-spacing: 0.25em;
+    text-align: center;
+    color: $color-fill;
+    background-color: $color-stroke;
+    @extend .uppercase, .animate-all;
+
+    &.selected {
+      border-radius: $border-radius;
+      box-shadow: $box-shadow;
     }
 
-    .action-text {
-        display: block;
-        margin: auto;
-        width: 90%;
-        text-align: center;
-        overflow: hidden;
+    &:not(.selected) {
+      border-color: rgba($color-fill, $alpha-light);
     }
 
-    .action-icon {
-        position: absolute;
-        font-size: 100%;
-
-        &.left {
-            left: 1em;
-        }
-
-        &.right {
-            right: 1em;
-        }
+    &:hover {
+      color: $color-stroke;
+      background-color: $color-fill;
     }
 
-    .dropdown {
-        position: relative;
-        display: block;
-        margin: 0 5px 5px;
-
-        .dropdown-menu {
-            display: block;
-            border-radius: 0 0 2px 2px;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            background-color: $color-stroke;
-            box-shadow: $box-shadow;
-            letter-spacing: 0.25em;
-            transform: scaleY(0);
-            transform-origin: top;
-            @extend .uppercase, .animate-all;
-
-            a {
-                display: block;
-                padding: 1em;
-                color: $color-fill;
-                font-size: 80%;
-                text-align: center;
-                border-top: solid 1px rgba($color-fill, $alpha-light);
-                @extend .animate-all;
-
-                &:hover {
-                    color: $color-stroke;
-                    background-color: $color-fill !important;
-                }
-            }
-        }
-
-        &:hover {
-            .sub-action {
-                border-radius: 2px 2px 0 0;
-            }
-
-            .dropdown-menu {
-                transform: scaleY(1);
-            }
-        }
+    i {
+      font-size: 100%;
     }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    box-shadow: $box-shadow;
+    transform: scaleY(0);
+    transform-origin: top;
+    z-index: 99;
+    @extend .animate-all;
+
+    li {
+      list-style-type: none;
+
+      &:last-of-type .dropdown-item {
+        border-radius: 0 0 $border-radius $border-radius;
+      }
+    }
+  }
+
+  &.open {
+    .dropdown-item.selected {
+      border-radius: $border-radius $border-radius 0 0;
+    }
+
+    .dropdown-menu {
+      transform: scaleY(1);
+    }
+  }
 }
 
 .share-links {
@@ -485,57 +472,6 @@ ul.share-buttons {
 
     &:before {
         margin-left: 10px;
-    }
-}
-
-.dropdown {
-    display: inline-block;
-
-    .dropdown-toggle {
-        @include circle(25px);
-
-        .caret {
-            border-top: 4px solid $color-white;
-            vertical-align: middle;
-        }
-    }
-
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        margin: 3px 0 0 0;
-        padding: 5px 0;
-        border-radius: 4px;
-        box-shadow: $box-shadow;
-        background-color: rgba($color-white, $alpha-dark);
-        color: $color-blue;
-        z-index: 99;
-        list-style: none;
-
-        & > li {
-            & > a {
-                display: block;
-                padding: 3px 20px;
-                clear: both;
-                white-space: nowrap;
-                text-align: left;
-            }
-
-            &.disabled > a {
-                @extend .uppercase, .muted;
-                font-size: 80%;
-            }
-
-            &:not(.disabled) > a:hover {
-                color: $color-white;
-                background-color: rgba($color-blue, $alpha-dark);
-                background-image: none;
-            }
-        }
-    }
-
-    &.open .dropdown-menu {
-        display: block;
     }
 }
 

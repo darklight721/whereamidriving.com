@@ -10,10 +10,8 @@ angular.module('whereAmIdrivingApp')
       controller: function($scope) {
         $scope.select = function(option) {
           $scope.selected = option;
+          $scope.open = false;
         };
-      },
-      link: function postLink(scope) {
-
       }
     };
   });

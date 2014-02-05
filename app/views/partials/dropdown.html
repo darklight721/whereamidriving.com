@@ -1,10 +1,12 @@
-<div class="dropdown">
-  <button class="sub-action">
-    <i class="action-icon left {{icon}}"></i>
-    <i class="action-icon right icon-menu"></i>
-    <span class="action-text">{{selected}}</span>
-  </button>
+<div class="dropdown" ng-mouseenter="open=true" ng-mouseleave="open=false" ng-class="{open:open}">
+  <a class="dropdown-item selected">
+    <i class="pull-left {{icon}}"></i>
+    <i class="pull-right icon-menu"></i>
+    {{selected}}
+  </a>
   <ul class="dropdown-menu">
-    <li ng-repeat="option in options | exclude:selected"><a ng-click="select(option)">{{option}}</a></li>
+    <li ng-repeat="option in options | exclude:selected">
+      <a class="dropdown-item" ng-click="select(option)">{{option}}</a>
+    </li>
   </ul>
 </div>

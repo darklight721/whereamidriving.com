@@ -228,19 +228,17 @@ body,
             font-size: 80%;
             color: $color-stroke;
             background-color: darken($color-fill, 10%);
-            border-color: darken($color-fill, 10%);
+            border: none;
             @extend .uppercase;
         }
         td {
-            color: $color-fill;
+            color: darken($color-fill, 10%);
             background-color: $color-stroke;
-            border-color: lighten($color-fill, 10%);
-            @extend .animate-all;
+            border: none;
         }
 
-        tr:hover td {
-            background-color: lighten($color-fill, 10%);
-            color: $color-stroke;
+        tr:nth-child(even) td {
+            background-color: lighten($color-fill, 25%);
         }
     }
 }
@@ -356,6 +354,7 @@ body,
     top: 0;
     right: 0;
     margin: 10px;
+    z-index: 99;
 
     a {
         margin-left: 5px;

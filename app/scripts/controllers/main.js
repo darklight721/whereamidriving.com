@@ -11,7 +11,8 @@ angular.module('whereAmIdrivingApp')
       $scope.region = $scope.regions[0];
     });
 
-    $scope.play = function(region) {
+    $scope.play = function() {
+      var region = $scope.region === 'All' ? '' : $scope.region;
       Server.cities(region).then(function(cities) {
         Session.new(cities, region);
         $location.path('/play');

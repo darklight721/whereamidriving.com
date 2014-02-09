@@ -18,13 +18,12 @@ angular.module('whereAmIdrivingApp')
       return Session.getLife();
     };
 
-    $scope.updateLife = function() {
-      if ($scope.answer === null)
-        Session.deductLife(1);
+    $scope.lives = function() {
+      return _.range(Session.getMaxLife());
     };
 
     $scope.score = function() {
-      return Session.getScore();
+      return Session.getScore() || '00';
     };
 
     $scope.choose = function(answer) {

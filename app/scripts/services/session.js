@@ -4,8 +4,9 @@ angular.module('whereAmIdrivingApp')
   .factory('Session', function () {
     // Service logic
     var levels = [], current = 0,
-        life = 15, score = 0,
-        stats = [], region = '';
+        life = 0, score = 0,
+        stats = [], region = '',
+        maxLife = 3;
 
     function pickRandom(list) {
       return list[_.random(list.length - 1)];
@@ -32,7 +33,7 @@ angular.module('whereAmIdrivingApp')
       new: function(cities, region_) {
         levels = _.shuffle(cities);
         current = 0;
-        life = 15;
+        life = maxLife;
         score = 0;
         stats.length = 0;
         region = region_ || 'All';
@@ -54,7 +55,7 @@ angular.module('whereAmIdrivingApp')
             isCorrect = answer === currentLevel.name;
 
         if (isCorrect) score += 10;
-        else this.deductLife(5);
+        else this.deductLife();
         stats.push({
           city: currentLevel.name,
           region: currentLevel.region,
@@ -67,7 +68,11 @@ angular.module('whereAmIdrivingApp')
         return life;
       },
       deductLife: function(factor) {
+        factor = factor || 1;
         life = Math.max(0, life - factor);
+      },
+      getMaxLife: function() {
+        return maxLife;
       },
       getScore: function() {
         return score;

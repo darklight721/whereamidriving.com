@@ -1,20 +1,29 @@
-<div class="pure-u-1 max-height" ng-init="play()">
-  <map onposchanged="updateLife()" position="{{city.position}}" class="max-height"></map>
-  <div class="play fixed-bottom">
+<div class="pure-u-1 max-height play" ng-init="play()">
+  <map position="{{city.position}}"></map>
+  <div class="top-bar">
+    <div class="life" title="Life">
+      <span ng-repeat="l in lives()">
+        <i class="icon-heart" ng-show="$index < life()"></i>
+        <i class="icon-heart2" ng-hide="$index < life()"></i>
+      </span>
+    </div>
+    <div class="score" title="Score"><strong>{{score()}}</strong></div>
+  </div>
+  <div class="bottom-bar">
     <div class="pure-g-r">
-      <div class="pure-u-1">
-        <life count="{{life()}}"></life>
-      </div>
       <div class="pure-u-1-5">
-        <div class="padded pure-hidden-phone">
-          <div class="info"><i class="icon-heart-fill" title="Life"></i> {{life()}} / <i class="icon-star" title="Score"></i> {{score()}}</div>
+        <div class="padded home-link">
+          <a href="#">
+            <i class="icon-arrow-left"></i>
+            <i class="icon-home"></i>
+          </a>
         </div>
       </div>
       <div class="pure-u-3-5">
         <div class="pure-g-r">
           <div ng-repeat="choice in city.choices" class="pure-u-1-{{ city.choices.length }}">
-            <div class="padded">
-              <button ng-click="choose(choice)" ng-disabled="answer" ng-class="state(choice)" class="pure-button max-width">{{choice}}</button>
+            <div class="padded choice">
+              <button ng-click="choose(choice)" ng-disabled="answer" ng-class="state(choice)">{{choice}}</button>
             </div>
           </div>
         </div>

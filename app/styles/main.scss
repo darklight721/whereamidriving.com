@@ -314,7 +314,7 @@ body,
         box-shadow: $box-shadow;
         transform: scaleY(0);
         transform-origin: top;
-        z-index: 99;
+        z-index: 100;
         @extend .animate-all;
 
         li {
@@ -377,6 +377,7 @@ body,
     width: 100%;
     padding: 0;
     margin: 0;
+    background-color: darken($color-fill, 10%);
 
     .nav {
         display: block;
@@ -407,17 +408,6 @@ body,
             .nav-text {
                 transform: translateY(100%);
                 opacity: 0;
-            }
-        }
-
-        &.active:hover {
-            .nav-icon {
-                transform: none;
-            }
-
-            .nav-text {
-                transform: none;
-                opacity: 1;
             }
         }
 
@@ -468,7 +458,7 @@ body,
         padding: 5px;
         border-radius: $radius;
         font-family: Tahoma, sans-serif;
-        font-size: 115%;
+        font-size: 120%;
         color: $color-fill;
         background-color: $color-stroke;
     }
@@ -511,6 +501,14 @@ body,
 
         .icon-home {
             font-size: 100%;
+        }
+    }
+
+    .next-link {
+        padding-right: 0;
+        text-align: right;
+        a {
+            border-radius: $radius 0 0 $radius;
         }
     }
 }

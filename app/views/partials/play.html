@@ -14,6 +14,7 @@
       <div class="pure-u-1-6">
         <div class="home">
           <a href="#"><i class="icon-arrow-left"></i> <i class="icon-home"></i></a>
+          <a class="phone-next-link" ng-click="next()" ng-show="answer">Next <i class="icon-arrow-right"></i></a>
         </div>
       </div>
       <div class="pure-u-2-3">
@@ -26,7 +27,7 @@
         </div>
       </div>
       <div class="pure-u-1-6">
-        <div class="next" ng-show="answer">
+        <div class="next pure-hidden-phone" ng-show="answer">
           <a ng-click="next()">Next <i class="icon-arrow-right"></i></a>
         </div>
       </div>

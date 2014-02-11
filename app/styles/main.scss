@@ -445,7 +445,7 @@ body,
     }
 
     .home, .next, .choice {
-        padding: 5px 5px 0 5px;
+        padding: 5px 0 0 0;
 
         button, a {
             display: block;
@@ -461,7 +461,7 @@ body,
             background-color: $color-fill;
             @extend .animate-all;
 
-            &:hover {
+            &:hover:not(:disabled) {
                 background-color: darken($color-fill, 10%);
             }
         }
@@ -469,49 +469,59 @@ body,
         a {
             display: inline-block;
             width: auto;
-            background-color: lighten($color-fill, 10%);
+        }
+    }
+
+    .choice {
+        padding: 5px 5px 0 5px;
+
+        .correct {
+            background-color: $color-green;
+
+            &:after {
+                margin-left: 10px;
+                font-family: 'icomoon';
+                font-size: 85%;
+                content: "\e60d";
+            }
+        }
+
+        .wrong {
+            background-color: $color-red;
+
+            &:after {
+                margin-left: 10px;
+                font-family: 'icomoon';
+                font-size: 85%;
+                content: "\e60e";
+            }
         }
     }
 
     .home {
-        padding-left: 0;
-
         a {
             border-radius: 0 $radius $radius 0;
             .icon-home {
                 font-size: 100%;
             }
         }
+
+        .phone-next-link {
+            display: none;
+            border-radius: $radius 0 0 $radius;
+            float: right;
+
+            @media screen and (max-width: $phone) {
+                display: inline-block;
+            }
+        }
     }
 
     .next {
-        padding-right: 0;
         text-align: right;
 
         a {
             border-radius: $radius 0 0 $radius;
         }
-    }
-}
-
-.correct {
-    background-color: $color-green;
-
-    &:after {
-        margin-left: 10px;
-        font-family: 'icomoon';
-        font-size: 85%;
-        content: "\e004";
-    }
-}
-
-.wrong {
-    background-color: $color-red;
-
-    &:after {
-        margin-left: 10px;
-        font-family: 'icomoon';
-        font-size: 85%;
-        content: "\e005";
     }
 }

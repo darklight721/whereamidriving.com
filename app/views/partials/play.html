@@ -1,4 +1,4 @@
-<div class="pure-u-1 max-height play" ng-init="play()">
+<div class="play" ng-init="play()">
   <map position="{{city.position}}"></map>
   <div class="top-bar">
     <div class="life" title="Life">
@@ -11,25 +11,22 @@
   </div>
   <div class="bottom-bar">
     <div class="pure-g-r">
-      <div class="pure-u-1-5">
-        <div class="padded home-link">
-          <a href="#">
-            <i class="icon-arrow-left"></i>
-            <i class="icon-home"></i>
-          </a>
+      <div class="pure-u-1-6">
+        <div class="home">
+          <a href="#"><i class="icon-arrow-left"></i> <i class="icon-home"></i></a>
         </div>
       </div>
-      <div class="pure-u-3-5">
+      <div class="pure-u-2-3">
         <div class="pure-g-r">
           <div ng-repeat="choice in city.choices" class="pure-u-1-{{ city.choices.length }}">
-            <div class="padded choice">
+            <div class="choice">
               <button ng-click="choose(choice)" ng-disabled="answer" ng-class="state(choice)">{{choice}}</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="pure-u-1-5">
-        <div class="padded next-link" ng-show="answer">
+      <div class="pure-u-1-6">
+        <div class="next" ng-show="answer">
           <a ng-click="next()">Next <i class="icon-arrow-right"></i></a>
         </div>
       </div>

@@ -34,9 +34,8 @@ angular.module('whereAmIdrivingApp')
     };
 
     $scope.state = function(city) {
-      return !$scope.answer || $scope.answer.city !== city ? '' :
-             $scope.answer.correct ? 'correct' :
-             'wrong';
+      return $scope.answer && $scope.answer.city === city ?
+             $scope.answer.correct ? 'correct' : 'wrong' : '';
     };
 
     $scope.next = function() {

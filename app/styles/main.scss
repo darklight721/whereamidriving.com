@@ -164,13 +164,17 @@ body,
     justify-content: center;
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
+    overflow: auto;
 
     @media screen and (max-width: $phone) {
         display: block;
-        padding-top: 100px;
+        padding: 60px 10px;
+        text-align: center;
 
         .flex-wrapper {
             display: inline-block;
+            max-width: 100%;
         }
     }
 }
@@ -241,6 +245,7 @@ body,
 
         &:hover {
             background-color: darken($color-fill, 10%);
+            letter-spacing: 2px;
         }
     }
 }
@@ -348,12 +353,12 @@ body,
     background-color: darken($color-fill, 10%);
 
     .nav {
+        position: relative;
         display: block;
         padding: 1em;
         text-align: center;
         color: $color-stroke;
         background-color: $color-fill;
-        box-shadow: $box-shadow inset;
 
         .nav-icon {
             display: block;
@@ -365,34 +370,36 @@ body,
             display: block;
             font-size: 80%;
             @extend .uppercase, .animate-all;
-        }
 
-        &.active, &:hover {
-            .nav-icon {
-                transform: scale(1.5);
-                transform-origin: top;
-            }
-
-            .nav-text {
-                transform: translateY(100%);
-                opacity: 0;
+            @media screen and (max-width: $phone) {
+                display: none;
             }
         }
 
-        @media screen and (max-width: $phone) {
-            .nav-icon, .nav-text {
-                display: inline-block;
-                margin-right: 5px;
-                font-size: 100%;
-            }
+        &.active:before {
+            position: absolute;
+            display: block;
+            top: -10px;
+            left: 50%;
+            margin-left: -10px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid $color-fill;
+            content: "";
+        }
 
+        @media screen and (min-width: $phone + 1) {
             &.active, &:hover {
                 .nav-icon {
-                    transform: none;
+                    transform: scale(1.5);
+                    transform-origin: top;
                 }
+
                 .nav-text {
-                    display: none;
-                    transform: none;
+                    transform: translateY(100%);
+                    opacity: 0;
                 }
             }
         }
@@ -401,10 +408,18 @@ body,
     .nav-item {
         &:first-of-type .nav {
             background-color: lighten($color-fill, 10%);
+
+            &.active:before {
+                border-bottom-color: lighten($color-fill, 10%);
+            }
         }
 
         &:last-of-type .nav {
             background-color: darken($color-fill, 10%);
+
+            &.active:before {
+                border-bottom-color: darken($color-fill, 10%);
+            }
         }
     }
 }

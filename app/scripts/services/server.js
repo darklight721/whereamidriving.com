@@ -6,10 +6,6 @@ angular.module('whereAmIdrivingApp')
     var dataFile = 'data.json',
         isDataCurrent = dataFile === Store.get('version');
 
-    function reject(deferred) {
-      return function(error) { deferred.reject(error); };
-    }
-
     function get(key) {
       var deferred = $q.defer(),
           value = Store.get(key);
@@ -19,7 +15,7 @@ angular.module('whereAmIdrivingApp')
       }
       else {
         $http.get(dataFile).success(function(data) {
-          if (!data) return reject(deferred)('No data');
+          if (!data) return deferred.reject('No data');
 
           isDataCurrent = true;
           Store.set('version', dataFile);
@@ -32,7 +28,7 @@ angular.module('whereAmIdrivingApp')
           }).flatten().value());
 
           deferred.resolve(Store.get(key));
-        }).error(reject(deferred));
+        }).error(deferred.reject);
       }
 
       return deferred.promise;
@@ -48,25 +44,25 @@ angular.module('whereAmIdrivingApp')
 
         get('cities').then(function(cities) {
           deferred.resolve(region ? _.where(cities, { region: region }) : cities);
-        }, reject(deferred));
+        }, deferred.reject);
 
         return deferred.promise;
       },
       stats: function() {
         var deferred = $q.defer();
 
-        $http.get('/api/stats').success(function(data) {
-          deferred.resolve(data);
-        }).error(reject(deferred));
+        $http.get('/api/stats')
+             .success(deferred.resolve)
+             .error(deferred.reject);
 
         return deferred.promise;
       },
       submitScore: function(score) {
         var deferred = $q.defer();
 
-        $http.post('/api/submit_score', score).success(function() {
-          deferred.resolve();
-        }).error(reject(deferred));
+        $http.post('/api/submit_score', score)
+             .success(deferred.resolve)
+             .error(deferred.reject);
 
         return deferred.promise;
       }

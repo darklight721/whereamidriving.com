@@ -12,9 +12,15 @@
           <li ng-repeat="mistake in mistakes"><a ng-href="{{buildGMapsLink(mistake.city)}}">{{mistake.city}}</a></li>
         </ol>
       </div>
-      <div class="pabel-footer">
-        <a class="pure-button" target="_blank" ng-href="{{buildTwitterLink()}}">Tweet Score</a>
-        <a class="pure-button" ng-click="playAgain()">Play Again</a>
+      <div class="panel-footer">
+        <div class="pure-g-r">
+          <div class="pure-u-1-2">
+            <a class="pure-button" target="_blank" ng-href="{{buildTwitterLink()}}">Tweet Score</a>
+          </div>
+          <div class="pure-u-1-2">
+            <a class="pure-button" ng-click="playAgain()">Play Again</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

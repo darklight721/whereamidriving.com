@@ -86,7 +86,7 @@ html, body {
 }
 
 body {
-    background-color: $color-blue;
+    background-color: $color-fill;
     background-image: url($bgImagePath);
     background-repeat: no-repeat;
     background-position: center;
@@ -555,6 +555,31 @@ body,
             padding: 0.5em;
             color: $color-fill;
             background-color: $color-stroke;
+        }
+
+        .panel-footer {
+            padding: 5px;
+            background-color: $color-stroke;
+
+            a {
+                display: block;
+                margin: 5px;
+                padding: 0.5em;
+                border-radius: $radius;
+                box-shadow: $box-shadow;
+                outline: none;
+                border: none;
+                font-size: 125%;
+                text-align: center;
+                color: $color-stroke;
+                background-color: $color-fill;
+                box-sizing: border-box;
+                @extend .animate-all;
+
+                &:hover:not(:disabled) {
+                    background-color: darken($color-fill, 10%);
+                }
+            }
         }
     }
 }

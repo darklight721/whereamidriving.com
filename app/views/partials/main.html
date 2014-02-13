@@ -1,18 +1,14 @@
 <div class="flex-center jumbotron">
   <div class="flex-wrapper">
+    <h1 class="title">Where am I driving?</h1>
+    <p class="sub-title">Identify as many cities as you can from these streetview images.</p>
+    <a class="action" ng-click="play()">Start Playing! <i class="icon-chevron-sign-right"></i></a>
     <div class="pure-g-r">
-      <div class="pure-u-1">
-        <h1 class="title">Where am I driving?</h1>
-        <p class="sub-title">Identify as many cities as you can from these streetview images.</p>
-        <a class="action" ng-click="play()">Start Playing! <i class="icon-chevron-sign-right"></i></a>
-        <div class="pure-g-r">
-          <div class="pure-u-1-2">
-            <dropdown options="modes" selected="mode" icon="icon-binoculars" />
-          </div>
-          <div class="pure-u-1-2">
-            <dropdown options="regions" selected="region" icon="icon-earth" />
-          </div>
-        </div>
+      <div class="pure-u-1-2">
+        <dropdown options="modes" selected="mode" icon="icon-binoculars" />
+      </div>
+      <div class="pure-u-1-2">
+        <dropdown options="regions" selected="region" icon="icon-earth" />
       </div>
     </div>
   </div>

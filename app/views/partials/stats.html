@@ -1,31 +1,27 @@
 <div class="flex-center stats">
   <div class="flex-wrapper">
-    <div class="pure-g-r">
-      <div class="pure-u-1">
-        <table class="pure-table pure-table-horizontal">
-          <thead>
-            <tr>
-              <th>Region</th>
-              <th>Cities</th>
-              <th>Games</th>
-              <th>Average Score</th>
-              <th>Easiest Cities</th>
-              <th>Hardest Cities</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="stat in stats">
-              <td>{{stat.region}}</td>
-              <td>{{stat.cities}}</td>
-              <td>{{stat.count}}</td>
-              <td>{{(stat.total / stat.count) || 0 | number:0}}</td>
-              <td>{{stat.easiestCity}}</td>
-              <td>{{stat.hardestCity}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <table class="pure-table pure-table-horizontal">
+      <thead>
+        <tr>
+          <th>Region</th>
+          <th>Cities</th>
+          <th>Games</th>
+          <th>Average Score</th>
+          <th>Easiest Cities</th>
+          <th>Hardest Cities</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="stat in stats">
+          <td>{{stat.region}}</td>
+          <td>{{stat.cities}}</td>
+          <td>{{stat.count}}</td>
+          <td>{{(stat.total / stat.count) || 0 | number:0}}</td>
+          <td>{{stat.easiestCity}}</td>
+          <td>{{stat.hardestCity}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 <nav active="stats" />

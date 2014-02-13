@@ -18,20 +18,25 @@ angular.module('whereAmIdrivingApp')
       }
     };
 
-    $scope.buildTwitterParams = function() {
+    $scope.buildTwitterLink = function() {
       var params = [
         ['url', 'http://whereamidriving.com'],
         ['text', 'Beat my score of ' + $scope.score + ' in'],
         ['related', 'pr00t']
       ];
 
-      return params.map(function(param) {
+      return 'https://twitter.com/share?' + params.map(function(param) {
         return param[0] + '=' + encodeURIComponent(param[1]);
       }).join('&');
     };
 
     $scope.buildGMapsLink = function(city) {
       return 'http://maps.google.com/?q=' + city.replace(/\s/g, '+');
+    };
+
+    $scope.playAgain = function() {
+      Session.new();
+      $location.path('/play');
     };
 
   });

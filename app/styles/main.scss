@@ -540,3 +540,21 @@ body,
         }
     }
 }
+
+.result {
+    .panel {
+        .panel-header {
+            color: $color-stroke;
+            background-color: $color-fill;
+            font-size: 150%;
+            padding: 0.5em;
+            text-align: center;
+        }
+
+        .panel-body {
+            padding: 0.5em;
+            color: $color-fill;
+            background-color: $color-stroke;
+        }
+    }
+}

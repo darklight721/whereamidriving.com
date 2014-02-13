@@ -1,15 +1,22 @@
-<div class="pure-u-1 max-height" ng-init="init()">
-  <div class="flex-center">
-    <div class="result">
-      <p>Your total score is: <strong>{{score}}</strong></p>
-      <p ng-show="mistakes.length">
-        Here are your mistakes:
-      </p>
-      <ol ng-show="mistakes.length">
-        <li ng-repeat="mistake in mistakes"><a ng-href="{{buildGMapsLink(mistake.city)}}">{{mistake.city}}</a></li>
-      </ol>
-      <a class="pure-button" target="_blank" ng-href="https://twitter.com/share?{{buildTwitterParams()}}">Tweet Score</a>
-      <a class="pure-button" href="#/">Play Again</a>
+<div class="flex-center result" ng-init="init()">
+  <div class="flex-wrapper">
+    <div class="panel">
+      <div class="panel-header">
+        Your total score is: <strong>{{score}}</strong>
+      </div>
+      <div class="panel-body">
+        <p ng-show="mistakes.length">
+          Here are the cities you were wrong about:
+        </p>
+        <ol ng-show="mistakes.length">
+          <li ng-repeat="mistake in mistakes"><a ng-href="{{buildGMapsLink(mistake.city)}}">{{mistake.city}}</a></li>
+        </ol>
+      </div>
+      <div class="pabel-footer">
+        <a class="pure-button" target="_blank" ng-href="{{buildTwitterLink()}}">Tweet Score</a>
+        <a class="pure-button" ng-click="playAgain()">Play Again</a>
+      </div>
     </div>
   </div>
 </div>
+<nav />

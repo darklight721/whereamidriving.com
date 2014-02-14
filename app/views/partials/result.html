@@ -6,7 +6,7 @@
       </div>
       <div class="panel-body">
         <p ng-show="mistakes.length">
-          Here are the cities you were wrong about:
+          Here are the cities that you missed:
         </p>
         <ol ng-show="mistakes.length">
           <li ng-repeat="mistake in mistakes"><a ng-href="{{buildGMapsLink(mistake.city)}}">{{mistake.city}}</a></li>
@@ -15,10 +15,10 @@
       <div class="panel-footer">
         <div class="pure-g-r">
           <div class="pure-u-1-2">
-            <a class="pure-button" target="_blank" ng-href="{{buildTwitterLink()}}">Tweet Score</a>
+            <a target="_blank" ng-href="{{buildTwitterLink()}}">Tweet Score</a>
           </div>
           <div class="pure-u-1-2">
-            <a class="pure-button" ng-click="playAgain()">Play Again</a>
+            <a ng-click="playAgain()">Play Again</a>
           </div>
         </div>
       </div>

@@ -1,6 +1,16 @@
+@import "icomoon";
+
 // *** variables ***
 
 $bgImagePath: "/images/bg.jpg";
+$color-black: #34495e;
+$alpha-light: 0.3;
+$alpha-medium: 0.6;
+$alpha-dark: 0.9;
+$radius: 2px;
+$phone: 767px;
+$box-shadow: 0 2px 5px -1px rgba(#000, $alpha-light);
+
 $color-white: #f6f6f6;
 $color-blue: #5487bb;
 $color-green: #27ae60;
@@ -8,42 +18,8 @@ $color-yellow: #ceb484;
 $color-red: #e74c3c;
 $color-orange: #e67e22;
 $color-aquamarine: #7ac0bd;
-$color-black: #34495e;
-$alpha-light: 0.3;
-$alpha-medium: 0.6;
-$alpha-dark: 0.9;
-$radius: 2px;
-$fontsize-small: 12px;
-$fontsize-medium: 14px;
-$fontsize-large: 16px;
-$phone: 767px;
-$box-shadow: 0 2px 5px -1px rgba(#000, $alpha-light);
-
 $color-fill: $color-aquamarine;
 $color-stroke: $color-white;
-
-// *** mixins ***
-
-@mixin score($color) {
-    color: $color;
-    border: 1px solid rgba($color, $alpha-dark);
-
-    &.active {
-        color: $color-white;
-        background-color: rgba($color, $alpha-dark);
-    }
-    &:hover {
-        color: $color-white;
-        background-color: rgba($color, $alpha-dark);
-    }
-}
-
-@mixin circle($diameter) {
-    padding: 0;
-    width: $diameter;
-    height: $diameter;
-    border-radius: $diameter / 2;
-}
 
 // *** utility classes ***
 
@@ -92,6 +68,7 @@ body {
     background-position: center;
     background-size: cover;
     color: $color-white;
+    font-size: 100%;
 
     @media screen and (max-width: $phone) {
         font-size: 80%;
@@ -495,9 +472,7 @@ body,
 
             &:after {
                 margin-left: 10px;
-                font-family: 'icomoon';
-                font-size: 85%;
-                content: "\e60d";
+                @extend %icomoon, .icon-checkmark:before;
             }
         }
 
@@ -506,9 +481,7 @@ body,
 
             &:after {
                 margin-left: 10px;
-                font-family: 'icomoon';
-                font-size: 85%;
-                content: "\e60e";
+                @extend %icomoon, .icon-close:before;
             }
         }
     }

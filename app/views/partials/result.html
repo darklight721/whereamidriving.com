@@ -4,11 +4,9 @@
       <div class="panel-header">
         Your total score is: <strong>{{score}}</strong>
       </div>
-      <div class="panel-body">
-        <p ng-show="mistakes.length">
-          Here are the cities that you missed:
-        </p>
-        <ol ng-show="mistakes.length">
+      <div class="panel-body" ng-show="mistakes.length">
+        <p>These are the cities that you missed:</p>
+        <ol>
           <li ng-repeat="mistake in mistakes"><a ng-href="{{buildGMapsLink(mistake.city)}}">{{mistake.city}}</a></li>
         </ol>
       </div>

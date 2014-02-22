@@ -3,14 +3,16 @@
 // *** variables ***
 
 $bgImagePath: "/images/bg.jpg";
-$color-black: #34495e;
+$font-family: 'Raleway', sans-serif;
 $alpha-light: 0.3;
 $alpha-medium: 0.6;
 $alpha-dark: 0.9;
 $radius: 2px;
 $phone: 767px;
 $box-shadow: 0 2px 5px -1px rgba(#000, $alpha-light);
+$index-front: 99;
 
+$color-black: #34495e;
 $color-white: #f6f6f6;
 $color-blue: #5487bb;
 $color-green: #27ae60;
@@ -23,36 +25,24 @@ $color-stroke: $color-white;
 
 // *** utility classes ***
 
-.text-center { text-align: center; }
-
-.uppercase { text-transform: uppercase; }
-
-.muted { color: rgba($color-blue, $alpha-medium); }
-
-.fixed-top { position: fixed; top: 0; z-index: 99; }
-
-.fixed-bottom { position: fixed; bottom: 0; z-index: 99; }
+.pull-left { float: left; }
 
 .pull-right { float: right; }
 
-.pull-left { float: left; }
+%animate-all {
+    transition: all 0.4s;
+}
 
-.max-height { height: 100%; }
+%fixed-top {
+    position: fixed;
+    top: 0;
+    z-index: $index-front;
+}
 
-.max-width { width: 100%; }
-
-.padded { padding: 5px 5px 0 5px; }
-
-.animate-all { transition: all 0.4s; }
-
-.clearfix {
-  &:before, &:after {
-    content: " ";
-    display: table;
-  }
-  &:after {
-    clear: both;
-  }
+%fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    z-index: $index-front;
 }
 
 %full-size {
@@ -63,7 +53,6 @@ $color-stroke: $color-white;
 
 %button-block {
     display: block;
-    width: 100%;
     padding: 0.5em;
     box-sizing: border-box;
     box-shadow: $box-shadow;
@@ -74,12 +63,23 @@ $color-stroke: $color-white;
     text-align: center;
     color: $color-stroke;
     background-color: $color-fill;
-    @extend .animate-all;
+    @extend %animate-all;
 
-    &:hover {
+    &:hover:not(:disabled) {
         background-color: darken($color-fill, 10%);
     }
 }
+
+%link {
+    font-size: 1.6em;
+    color: $color-stroke;
+    @extend %animate-all;
+
+    &[href]:hover {
+        color: $color-fill;
+    }
+}
+
 
 // *** element styles ***
 
@@ -88,16 +88,22 @@ html, body {
 }
 
 body {
+    color: $color-stroke;
     background-color: $color-fill;
     background-image: url($bgImagePath);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    color: $color-white;
     font-size: 100%;
 
     @media screen and (max-width: $phone) {
         font-size: 80%;
+    }
+
+    &,
+    .pure-g [class *= "pure-u"],
+    .pure-g-r [class *= "pure-u"] {
+        font-family: $font-family;
     }
 }
 
@@ -109,22 +115,6 @@ a {
 
 button {
     font-family: inherit;
-}
-
-ol {
-    margin: 0 0 25px 0;
-
-    li {
-        text-align: left;
-    }
-}
-
-// *** pure custom styles ***
-
-body,
-.pure-g [class *= "pure-u"],
-.pure-g-r [class *= "pure-u"] {
-    font-family: 'Raleway', sans-serif;
 }
 
 // *** other styles ***
@@ -223,12 +213,11 @@ body,
 
     .action {
         margin: 20px 5px 10px 5px;
-        padding: 1em 3em !important;
-        width: auto !important;
+        padding: 1em 3em;
         @extend %button-block;
 
         &:hover {
-            letter-spacing: 2px;
+            letter-spacing: 0.1em;
         }
     }
 }
@@ -242,7 +231,6 @@ body,
         display: block;
         margin: 0;
         padding: 1em;
-        border: none;
         border-top: solid 1px transparent;
         font-size: 0.8em;
         letter-spacing: 0.25em;
@@ -250,7 +238,7 @@ body,
         text-transform: uppercase;
         color: $color-fill;
         background-color: $color-stroke;
-        @extend .animate-all;
+        @extend %animate-all;
 
         &.selected {
             border-radius: $radius;
@@ -282,8 +270,8 @@ body,
         box-shadow: $box-shadow;
         transform: scaleY(0);
         transform-origin: top;
-        z-index: 100;
-        @extend .animate-all;
+        z-index: $index-front + 1;
+        @extend %animate-all;
 
         li {
             list-style-type: none;
@@ -305,30 +293,20 @@ body,
     }
 }
 
-.link {
-    font-size: 1.6em;
-    color: $color-stroke;
-    @extend .animate-all;
-
-    &[href]:hover {
-        color: $color-fill;
-    }
-}
-
 .share-links {
-    @extend .fixed-top;
+    @extend %fixed-top;
     right: 0;
-    z-index: 100;
+    z-index: $index-front + 1;
     padding: 10px;
 
     a {
         margin-left: 5px;
-        @extend .link;
+        @extend %link;
     }
 }
 
 .nav-list {
-    @extend .fixed-bottom;
+    @extend %fixed-bottom;
     left: 0;
     width: 100%;
     padding: 0;
@@ -345,14 +323,15 @@ body,
 
         .nav-icon {
             display: block;
-            font-size: 160%;
-            @extend .animate-all;
+            font-size: 1.6em;
+            @extend %animate-all;
         }
 
         .nav-text {
             display: block;
-            font-size: 80%;
-            @extend .uppercase, .animate-all;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            @extend %animate-all;
 
             @media screen and (max-width: $phone) {
                 display: none;
@@ -360,16 +339,17 @@ body,
         }
 
         &.active:before {
+            $length: 10px;
             position: absolute;
             display: block;
-            top: -10px;
+            top: -$length;
             left: 50%;
-            margin-left: -10px;
+            margin-left: -$length;
             width: 0;
             height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 10px solid $color-fill;
+            border-left: $length solid transparent;
+            border-right: $length solid transparent;
+            border-bottom: $length solid $color-fill;
             content: "";
         }
 
@@ -411,7 +391,7 @@ body,
     height: 100%;
 
     .top-bar {
-        @extend .fixed-top;
+        @extend %fixed-top;
         left: 0;
         width: 100%;
         padding: 10px;
@@ -420,7 +400,7 @@ body,
     }
 
     .bottom-bar {
-        @extend .fixed-bottom;
+        @extend %fixed-bottom;
         left: 0;
         width: 100%;
         padding: 10px 0;
@@ -429,7 +409,7 @@ body,
 
     .life {
         position: absolute;
-        @extend .link;
+        @extend %link;
     }
 
     .score {
@@ -437,7 +417,7 @@ body,
         padding: 5px;
         border-radius: $radius;
         font-family: Tahoma, sans-serif;
-        font-size: 125%;
+        font-size: 1.25em;
         color: $color-fill;
         background-color: $color-stroke;
     }
@@ -445,28 +425,14 @@ body,
     .home, .next, .choice {
         padding: 5px 0 0 0;
 
-        button, a {
-            display: block;
-            padding: 0.5em;
+        button {
             width: 100%;
-            border-radius: $radius;
-            box-shadow: $box-shadow;
-            outline: none;
-            border: none;
-            font-size: 125%;
-            text-align: center;
-            color: $color-stroke;
-            background-color: $color-fill;
-            @extend .animate-all;
-
-            &:hover:not(:disabled) {
-                background-color: darken($color-fill, 10%);
-            }
+            @extend %button-block;
         }
 
         a {
             display: inline-block;
-            width: auto;
+            @extend %button-block;
         }
     }
 
@@ -527,7 +493,7 @@ body,
         .panel-header {
             color: $color-stroke;
             background-color: $color-fill;
-            font-size: 150%;
+            font-size: 1.5em;
             padding: 0.5em;
             text-align: center;
         }
@@ -536,6 +502,7 @@ body,
             padding: 0.5em;
             color: $color-fill;
             background-color: $color-stroke;
+            text-align: left;
         }
 
         .panel-footer {
@@ -543,23 +510,8 @@ body,
             background-color: $color-stroke;
 
             a {
-                display: block;
                 margin: 5px;
-                padding: 0.5em;
-                border-radius: $radius;
-                box-shadow: $box-shadow;
-                outline: none;
-                border: none;
-                font-size: 125%;
-                text-align: center;
-                color: $color-stroke;
-                background-color: $color-fill;
-                box-sizing: border-box;
-                @extend .animate-all;
-
-                &:hover:not(:disabled) {
-                    background-color: darken($color-fill, 10%);
-                }
+                @extend %button-block;
             }
         }
     }
